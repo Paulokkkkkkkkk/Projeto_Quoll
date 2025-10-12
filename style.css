@@ -1,0 +1,65 @@
+/* ===== POPUP DE MODOS ===== */
+#popup-modos {
+  position: fixed;                /* Fixa o popup em relação à tela */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;                  /* Começa oculto */
+  justify-content: center;        /* Centraliza horizontalmente */
+  align-items: center;            /* Centraliza verticalmente */
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro transparente */
+  backdrop-filter: blur(4px);     /* Efeito de desfoque no fundo */
+  z-index: 1000;                  /* Fica acima de tudo */
+}
+
+/* Caixa principal do popup */
+#popup-modos > div {
+  background: linear-gradient(135deg, #1a237e, #283593);
+  color: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  animation: popupAnim 0.25s ease;
+}
+
+/* Botões dentro do popup */
+#popup-modos button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+#popup-modos button:hover {
+  background-color: #e68900;
+  transform: scale(1.05);
+}
+
+/* Título */
+#popup-modos h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #fff;
+}
+
+/* Animação suave de entrada */
+@keyframes popupAnim {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quoll - Home</title>
+<link rel="stylesheet" href="style.css">
+
 
 <style>
   body {
@@ -125,11 +127,14 @@
   <!-- Botões principais -->
   <section class="botoes">
     <div class="linha">
-      <button onclick="window.location.href='modos.html'">Start</button>
+      <button onclick="abrirModos()">Start</button>
       <button>Continue</button>
     </div>
 
   </section>
+
+  <!-- Container onde o popup será injetado -->
+<div id="popup-modos" style="display: none;"></div>
 
   <!-- Rodapé -->
   <footer>
@@ -148,9 +153,8 @@
       <div></div>
     </div>
   </footer>
-
-  <!-- Link do Javascript -->
-   <script scr="script.js"> </script>
    
+  <script src="modes.js"></script>
+
 </body>
 </html>
