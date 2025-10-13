@@ -41,7 +41,7 @@
 }
 
 #popup-modos button:hover {
-  background-color: #e68900;
+  background-color: #ffffffff;
   transform: scale(1.05);
 }
 
