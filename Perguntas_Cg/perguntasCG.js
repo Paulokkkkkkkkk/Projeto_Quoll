@@ -72,7 +72,7 @@ function showResult() {
   resultContainer.classList.remove("hidden");
   resultContainer.innerHTML = `
     <h2>Você acertou ${score} de ${quizData.length} perguntas!</h2>
-    <a href="index.html" class="botao-voltar">Voltar ao Menu</a>
+    <a href="Home/index.html" class="botao-voltar">Voltar ao Menu</a>
   `;
 }
 

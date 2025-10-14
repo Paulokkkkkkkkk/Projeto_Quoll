@@ -1,5 +1,5 @@
 function abrirModos() {
-  fetch("modos.html")
+  fetch("/Modos/modos.html")
     .then(res => res.text())
     .then(html => {
       const popup = document.getElementById("popup-modos");
