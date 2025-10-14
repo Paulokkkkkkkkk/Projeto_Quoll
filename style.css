@@ -63,3 +63,15 @@
     opacity: 1;
   }
 }
+
+#botaoSom {
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+#botaoSom:hover {
+  transform: rotate(30deg);
+  opacity: 1;
+}

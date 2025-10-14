@@ -1,0 +1,16 @@
+<audio id="musicaFundo" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<button id="botaoSom">🔊 Ativar Música</button>
+
+<script>
+  const musica = document.getElementById('musicaFundo');
+  const botao = document.getElementById('botaoSom');
+
+  botao.addEventListener('click', () => {
+    musica.volume = 1.0;
+    musica.play();
+    botao.style.display = 'none'; // esconde o botão após clicar
+  });
+</script>
