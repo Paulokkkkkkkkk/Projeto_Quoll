@@ -6,8 +6,8 @@ const quizData = [
   },
   {
     question: "Qual dessas logos é a certa (Homem-Aranha)?",
-    options: ["Perguntas_Flm/imgs/Batman.png", "Perguntas_Flm/imgs/superchoque.png", "Perguntas_Flm/imgs/spiderman.png", "Perguntas_Flm/imgs/flash.png"],
-    answer: "Perguntas_Flm/imgs/spiderman.png"
+    options: ["imgs/Batman.png", "imgs/superchoque.png", "imgs/spiderman.png", "imgs/flash.png"],
+    answer: "imgs/spiderman.png"
   },
   {
     question: "Qual o filme com o maior número de premiações até no momento?",
@@ -77,3 +77,32 @@ function showResult() {
 }
 
 loadQuestion();
+
+function loadQuestion() {
+  const questionData = quizData[currentQuestion];
+  questionText.textContent = questionData.question;
+  questionNumber.textContent = `${currentQuestion + 1}.`;
+
+  optionsContainer.innerHTML = "";
+  questionData.options.forEach((opt) => {
+    const optionBtn = document.createElement("div");
+    optionBtn.classList.add("option");
+
+    // Verifica se é uma imagem (termina com .png, .jpg, etc)
+    if (opt.endsWith(".png") || opt.endsWith(".jpg") || opt.endsWith(".jpeg") || opt.endsWith(".gif")) {
+      const img = document.createElement("img");
+      img.src = opt;
+      img.alt = "Opção de resposta";
+      img.style.width = "120px";  // ajusta o tamanho como quiser
+      img.style.height = "auto";
+      optionBtn.appendChild(img);
+    } else {
+      // Se for texto normal
+      optionBtn.textContent = opt;
+    }
+
+    optionBtn.addEventListener("click", () => selectOption(optionBtn, questionData.answer));
+    optionsContainer.appendChild(optionBtn);
+  });
+}
+
