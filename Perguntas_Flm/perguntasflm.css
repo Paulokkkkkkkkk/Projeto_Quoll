@@ -99,6 +99,15 @@ footer {
   text-align: center;
 }
 
+.option.correct {
+  background-color: #3b1470; /* verde */
+}
+
+.option.wrong {
+  background-color: #f44336; /* vermelho */
+}
+
+
 /* Define um tamanho máximo para todas as imagens de opção */
 .option-image {
     max-width: 100%; /* Garante que a imagem não ultrapasse o botão */

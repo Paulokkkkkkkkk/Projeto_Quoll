@@ -11,8 +11,8 @@ const quizData = [
   },
   {
     question: "Qual o filme com o maior número de premiações até no momento?",
-    options: ["Ben-Hur (1967)", "Senhor dos Anéis: O Retorno do Rei (2003)", "Interestelar (2014)", "Vingadores: Ultimato (2019)"],
-    answer: "Ben-Hur (1967)"
+    options: ["Ben-Hur (1959)", "Senhor dos Anéis: O Retorno do Rei (2003)", "Interestelar (2014)", "Vingadores: Ultimato (2019)"],
+    answer: "Ben-Hur (1959)"
   }
 ];
 
@@ -42,19 +42,32 @@ function loadQuestion() {
 
 function selectOption(selected, correctAnswer) {
   const options = document.querySelectorAll(".option");
-  options.forEach(opt => {
+
+  options.forEach((opt) => {
     opt.style.pointerEvents = "none";
-    if (opt.textContent === correctAnswer) {
+
+    // Detecta se o conteúdo é imagem
+    const img = opt.querySelector("img");
+    const isCorrect =
+      img && img.src.includes(correctAnswer) || opt.textContent === correctAnswer;
+
+    if (isCorrect) {
       opt.classList.add("correct");
     }
   });
 
-  if (selected.textContent === correctAnswer) {
+  const selectedImg = selected.querySelector("img");
+  const isSelectedCorrect =
+    selectedImg && selectedImg.src.includes(correctAnswer) || selected.textContent === correctAnswer;
+
+  if (isSelectedCorrect) {
+    selected.classList.add("correct");
     score++;
   } else {
-    selected.classList.add("incorrect");
+    selected.classList.add("wrong");
   }
 }
+
 
 nextBtn.addEventListener("click", () => {
   currentQuestion++;
