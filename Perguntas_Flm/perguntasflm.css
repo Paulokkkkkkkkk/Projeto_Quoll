@@ -100,28 +100,28 @@ footer {
 }
 
 .option.correct {
-  background-color: #3b1470; /* verde */
+  background-color: #3b1470; 
 }
 
 .option.wrong {
-  background-color: #f44336; /* vermelho */
+  background-color: #f44336; 
 }
 
 
-/* Define um tamanho máximo para todas as imagens de opção */
+
 .option-image {
-    max-width: 100%; /* Garante que a imagem não ultrapasse o botão */
-    height: auto;     /* Mantém a proporção da imagem */
-    display: block;   /* Remove espaçamentos indesejados */
+    max-width: 100%; 
+    height: auto;    
+    display: block;   
 }
 
-/* Você pode querer que o botão que contém a imagem tenha um tamanho fixo: */
+
 .option-btn {
-    width: 150px;       /* Exemplo de largura */
-    height: 150px;      /* Exemplo de altura */
+    width: 150px;       
+    height: 150px;     
     padding: 5px;
     border: 2px solid #ccc;
-    display: inline-flex; /* Para centralizar a imagem dentro do botão */
+    display: inline-flex; 
     justify-content: center;
     align-items: center;
     margin: 10px;
