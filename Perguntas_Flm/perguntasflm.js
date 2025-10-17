@@ -13,7 +13,17 @@ const quizData = [
     question: "Qual o filme com o maior número de premiações até no momento?",
     options: ["Ben-Hur (1959)", "Senhor dos Anéis: O Retorno do Rei (2003)", "Interestelar (2014)", "Vingadores: Ultimato (2019)"],
     answer: "Ben-Hur (1959)"
-  }
+  },
+  {
+    question: "Qual o filme de terror com a pior avaliação?",
+    options: ["Anaconda (1997)", "Ursinho Pooh - Sangue e Mel 2 (2024)", "A Centopeia Humana (2009)", "Olhos Famintos: Renascimento (2022)"],
+    answer: "Olhos Famintos: Renascimento (2022)"
+  },
+    {
+    question: "Quantos trófeus o filme Oppenheimer(2023) ganhou?",
+    options: ["8", "10", "7", "4"],
+    answer: "7"
+  },
 ];
 
 let currentQuestion = 0;
