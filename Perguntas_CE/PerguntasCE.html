@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz dos Games</title>
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+  <!-- Estilo -->
+  <link rel="stylesheet" href="/Perguntas_CE/PerguntasCE.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <div class="question-header">
+      <div class="circle">
+        <span id="question-number">1.</span>
+      </div>
+      <h2 id="question-text"></h2>
+    </div>
+
+    <div id="options-container"></div>
+
+    <audio id="musicaFundo" loop>
+  <source src="/Sons/Music.mp3" type="audio/mpeg">
+</audio>
+
+  <button id="botaoSom">⚙</button>
+
+    <button id="next-btn">Próxima</button>
+    <div id="result" class="hidden"></div>
+  </div>
+
+  <footer>
+    <p>© 2025 Quoll. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="/Perguntas_CE/PerguntasCE.js"></script>
+  <script src="/Sons/audio.js"></script>
+
+</body>
+</ht

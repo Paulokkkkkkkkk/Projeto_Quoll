@@ -13,6 +13,30 @@ const quizData = [
     options: ["Causa", "Consequência", "Concessão", "Condição"],
     answer: "Concessão"
   },
+
+  {
+    question: "Qual das opções abaixo representa uma variação linguistica regional?",
+    options: ["'Você vai ao cinema?'", "'Tu vais ao cinema?'", "'Ela vai ao cinema?'", "'Nós fomos ao cinema?'"],
+    answer: "'Tu vais ao cinema?'"
+  },
+
+  {
+    question: "A expressão 'O tempo é um rio que corre sem para' contém qual figura de linguagem",
+    options: ["Metáfora", "Metonímia", "Antítese", "Hipérbole"],
+    answer: "Metáfora"
+  },
+
+   {
+    question: "Qual é a função da linguagem predominante em um texto jornalistico informativo",
+    options: ["Conativa", "Fática", "Referencial", "Poética"],
+    answer: "Referencial"
+  },
+
+  {
+    question: "O que é linguagem?",
+    options: ["Um conjunto fixo de palavras", "A capacidade humana de se comunicar por meio de signos", "Apenas o uso da língua falada", "A norma culta de um idioma"],
+    answer: "A capacidade humana de se comunicar por meio de signos"
+  },
 ];
 
 let currentQuestion = 0;
