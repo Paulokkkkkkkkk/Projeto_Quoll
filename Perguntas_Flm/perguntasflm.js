@@ -19,6 +19,16 @@ const quizData = [
     options: ["Anaconda (1997)", "Ursinho Pooh - Sangue e Mel 2 (2024)", "A Centopeia Humana (2009)", "Olhos Famintos: Renascimento (2022)"],
     answer: "Olhos Famintos: Renascimento (2022)"
   },
+   {
+    question: "Qual foi o primeiro filme da Disney?",
+    options: ["Branca de Neve e os Sete Anões", "Pinóquio", "Cinderela", "Aladdin"],
+    answer: "Branca de Neve e os Sete Anões"
+  },
+   {
+    question: "De qual filme é essa frase: 'Eles podem levar nossas vidas, mas nunca levarão nossa liberdade!'",
+    options: ["Pearl Harbor", "Mad Max", "Coração Valente", "Até o Último Homem"],
+    answer: "Coração Valente"
+  },
     {
     question: "Quantos trófeus o filme Oppenheimer(2023) ganhou?",
     options: ["8", "10", "7", "4"],
