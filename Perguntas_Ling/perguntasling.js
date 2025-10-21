@@ -37,6 +37,54 @@ const quizData = [
     options: ["Um conjunto fixo de palavras", "A capacidade humana de se comunicar por meio de signos", "Apenas o uso da língua falada", "A norma culta de um idioma"],
     answer: "A capacidade humana de se comunicar por meio de signos"
   },
+
+   {
+    question: "Qual é a função do sujeito na oração?",
+    options: ["Indicar a ação praticada", "Indicar quem pratica a ação", "Indicar o objeto da ação", "Indicar o tempo verbal"],
+    answer: "Indicar quem pratica a ação"
+  },
+
+  {
+    question: "Leia a frase: 'Maria comprou flores para a professora.' Qual é o objeto direto?",
+    options: ["Maria", "Comprou", "Flores", "Para a professora"],
+    answer: "Flores"
+  },
+
+   {
+    question: " Assinale a alternativa em que há erro de concordância verbal:",
+    options: ["Nós fomos ao parque ontem.", "Os meninos brinca na rua.", "Ela gosta de estudar.", "Vocês viajaram na semana passada."],
+    answer: "Os meninos brinca na rua."
+  },
+
+   {
+    question: ". Qual é a classificação da palavra “rápido” na frase: “Ele correu rápido”?",
+    options: ["Substantivo", "Adjetivo", "Advérbio", "Verbo"],
+    answer: "Advérbio"
+  },
+
+  {
+    question: "Identifique a oração subordinada na frase: Não fui à festa porque estava doente.",
+    options: ["Não fui à festa", "porque estava doente", "à festa", "Não fui"],
+    answer: "porque estava doente"
+  },
+
+  {
+    question: "Assinale a alternativa em que o plural está correto:",
+    options: ["Os cactos são espinhosos.", "Os lápis são novos.", "Os peixes nadam no rio.", "Todas estão corretas."],
+    answer: "Todas estão corretas"
+  },
+
+  {
+    question: "Assinale a frase em que o uso da vírgula está correto:",
+    options: ["João, e Maria foram ao cinema.", "Quando cheguei, ele já havia saído.", "Ela gosta de ler e, escrever.", "Fui ao mercado mas, não comprei nada."],
+    answer: "Quando cheguei, ele já havia saído."
+  },
+
+   {
+    question: "Leia o trecho: 'Embora estivesse cansado, continuou trabalhando'. Qual é a oração subordinada?",
+    options: ["Embora estivesse cansado", "Continuou trabalhando", "Estivesse cansado", "Embora continuou"],
+    answer: "Embora estivesse cansado"
+  },
 ];
 
 let currentQuestion = 0;
