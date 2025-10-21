@@ -1,40 +1,22 @@
-const botaoSom = document.getElementById('botaoSom');
 const musica = document.getElementById('musicaFundo');
-let musicaTocando = false;
+const botaoSom = document.getElementById('botaoSom');
+let tocando = false;
 
-// continua de onde parou
-window.addEventListener('load', () => {
-  const tempoSalvo = localStorage.getItem('tempoMusica');
-  if (tempoSalvo) {
-    musica.currentTime = parseFloat(tempoSalvo);
-  }
-
-  const tocando = localStorage.getItem('musicaTocando');
-  if (tocando === 'true') {
-    musica.volume = 1.0;
-    musica.play();
-    musicaTocando = true;
-    botaoSom.style.opacity = "1";
-  }
-});
-
-// quando clicar, ativa ou pausa
 botaoSom.addEventListener('click', () => {
-  if (!musicaTocando) {
-    musica.volume = 1.0;
+  if (!tocando) {
     musica.play();
-    musicaTocando = true;
-    localStorage.setItem('musicaTocando', 'true');
-    botaoSom.style.opacity = "1";
+    tocando = true;
+    botaoSom.textContent = "⏸️ Pausar Música";
   } else {
     musica.pause();
-    musicaTocando = false;
-    localStorage.setItem('musicaTocando', 'false');
-    botaoSom.style.opacity = "0.6";
+    tocando = false;
+    botaoSom.textContent = "🎵 Tocar Música";
   }
 });
 
-// salva tempo da música antes de sair da página
-window.addEventListener('beforeunload', () => {
-  localStorage.setItem('tempoMusica', musica.currentTime);
+// Toca a música ao clicar
+botaoSom.addEventListener('click', () => {
+    musica.volume = 1.0;
+    musica.play().catch(err => console.log("Erro ao tocar música:", err));
+    botaoSom.style.display = 'none'; // esconde botão depois do clique
 });
