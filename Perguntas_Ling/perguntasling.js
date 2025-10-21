@@ -1,10 +1,18 @@
 const quizData = [
   {
-    question: "Com  quantos anos se entra em Hogwarts (Harry Potter)?",
-    options: ["15 anos", "11 anos", "17 anos", "10 anos"],
-    answer: "11 anos"
+    question: "Qual o ponto usado no fim do paragrafo?",
+    options: ["?", ".", "!", ","],
+    answer: "."
   },
- 
+   {
+    question: "Assinale a alternativa correta quanto à colocação do pronome?",
+    options: ["Me empresta um lápis?", "Empresta-me um lápis?", "Me o empresta?", "Empresta o-me"],
+    answer: "Empresta-me um lápis?"
+  },  {
+    question: "No trecho 'Apesar da chuva, o vento aconteceu normalmente',a conjução 'Apesar de' indica?",
+    options: ["Causa", "Consequência", "Concessão", "Condição"],
+    answer: "Concessão"
+  },
 ];
 
 let currentQuestion = 0;
