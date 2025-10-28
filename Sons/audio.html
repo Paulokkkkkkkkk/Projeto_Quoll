@@ -1,16 +1,22 @@
-<audio id="musicaFundo" loop>
-  <source src="/Sons/Music.mp3" type="audio/mpeg">
-</audio>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Áudio - Quoll</title>
+</head>
+<body>
+  <!-- Áudio de fundo -->
+  <audio id="musicaFundo" src="Sons/Music.mp3" type="audio/mpeg" loop></audio>
+    <button id="botaoSom">🎵 Tocar Música</button>
 
-<button id="botaoSom">🔊 Ativar Música</button>
+  <audio id="musicaFundo" src="Sons/Music.mp3" type="audio/mpeg" loop></audio>
+<button id="botaoSom">🎵 Tocar Música</button>
 
-<script>
-  const musica = document.getElementById('musicaFundo');
-  const botao = document.getElementById('botaoSom');
 
-  botao.addEventListener('click', () => {
-    musica.volume = 1.0;
-    musica.play();
-    botao.style.display = 'none'; // esconde o botão após clicar
-  });
-</script>
+
+
+  <!-- Script -->
+  <script src="Sons/audio.js"></script>
+</body>
+</html>

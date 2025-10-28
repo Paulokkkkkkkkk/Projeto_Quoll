@@ -71,7 +71,34 @@
   transition: transform 0.2s ease, opacity 0.3s ease;
 }
 
-#botaoSom:hover {
-  transform: rotate(30deg);
-  opacity: 1;
+
+
+
+
+/* ===== FOOTER COM REDES SOCIAIS ===== */
+#footer-social {
+  background: #1a237e;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  font-family: Arial, sans-serif;
+}
+
+#footer-social p {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#footer-social .social-icons a {
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 26px;
+  color: white;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#footer-social .social-icons a:hover {
+  transform: scale(1.2);
+  color: #ff9800; /* cor ao passar o mouse */
 }

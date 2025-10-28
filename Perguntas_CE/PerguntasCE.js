@@ -1,10 +1,45 @@
 const quizData = [
   {
-    question: "Pergunta",
-    options: ["Opção 1", "Opção 2", "Opção 3", "Opção 4"],
-    answer: "Opção 2"
+    question: "Qual a raíz de 4?",
+    options: ["7", "2", "4", "3"],
+    answer: "2"
+  },
+   {
+    question: "qual o numero primo entre 4 e 8?",
+    options: ["6", "7", "8", "9"],
+    answer: "7"
+  },
+ {
+    question: "formula quimica do dioxido de carbono?",
+    options: ["CO", " CO²", "O²", "C²O"],
+    answer: "CO²"
+  },
+
+{
+    question: "qual o simbolo do elemento oxigenio?",
+    options: ["O", " Ox", "Og", "oxg"],
+    answer: "O"
+  },
+
+{
+    question: "Acido comum no estomago (acido cloridrico) tem formula:",
+    options: ["H²O", "HCl", "naCl", "H²SO4"],
+    answer: "HCl"
+  },
+
+{
+    question: "A luz viaja mais rapido em:",
+    options: ["Ar", "Agua", "vidro", "vacuo"],
+    answer: "vacuo"
+  },
+
+{
+    question: "o que ê uma mistura de duas ou mais substancias onde uma esta dissovilda na outra?",
+    options: ["elementos", "mistura heterogenea", "solução", "compostos"],
+    answer: "solução"
   },
 ];
+
 
 let currentQuestion = 0;
 let score = 0;
@@ -14,6 +49,7 @@ const questionNumber = document.getElementById("question-number");
 const optionsContainer = document.getElementById("options-container");
 const nextBtn = document.getElementById("next-btn");
 const resultContainer = document.getElementById("result");
+
 function loadQuestion() {
   const questionData = quizData[currentQuestion];
   questionText.textContent = questionData.question;
