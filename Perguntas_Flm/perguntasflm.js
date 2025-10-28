@@ -31,7 +31,7 @@ const quizData = [
   },
     {
     question: "Quantos trófeus o filme Oppenheimer(2023) ganhou?",
-    options: ["8", "10", "7", "4"],
+    options: ["5", "10", "8", "4"],
     answer: "7"
   },
 ];
@@ -59,6 +59,40 @@ function loadQuestion() {
     optionsContainer.appendChild(optionBtn);
   });
 }
+
+// Clique no número da questão conta como resposta (se o número for a resposta correta)
+questionNumber.addEventListener("click", () => {
+  const questionData = quizData[currentQuestion];
+  const clickedNumber = (currentQuestion + 1).toString(); // ex: "7"
+  console.log("Número clicado:", clickedNumber);
+
+  // compara a resposta do objeto da pergunta com o número atual
+  if (questionData.answer === clickedNumber) {
+    console.log("Esta pergunta tem a resposta igual ao número. Tentando selecionar a opção...");
+
+    const options = document.querySelectorAll(".option");
+    let found = false;
+
+    options.forEach(opt => {
+      // normaliza o texto da opção (remove espaços e pontos extras)
+      const txt = opt.textContent.trim().replace(/\./g, "");
+      console.log("Opção encontrada:", `"${opt.textContent}" -> normalizado: "${txt}"`);
+
+      if (txt === clickedNumber) {
+        // simula o clique no botão correto (vai disparar o eventListener que você já adicionou em loadQuestion)
+        opt.click();
+        found = true;
+      }
+    });
+
+    if (!found) {
+      console.log("Nenhuma opção com texto igual ao número foi encontrada. (verifique o texto das opções)");
+    }
+  } else {
+    console.log("Número não é a resposta certa desta pergunta.");
+  }
+});
+
 
 function selectOption(selected, correctAnswer) {
   const options = document.querySelectorAll(".option");
