@@ -14,3 +14,16 @@ botao.addEventListener('click', () => {
     botao.textContent = "🎵 Tocar Música";
   }
 });
+
+const musicaFundo = document.getElementById('musicaFundo');
+const botaoSom = document.getElementById('botaoSom');
+
+if (musicaFundo && botaoSom) {
+  botaoSom.addEventListener('click', () => {
+    if (musicaFundo.paused) {
+      musicaFundo.play();
+    } else {
+      musicaFundo.pause();
+    }
+  });
+}

@@ -139,3 +139,15 @@ function loadQuestion() {
   });
 }
 
+const musicaFundoFlm = document.getElementById('musicaFundoFlm');
+const botaoSomFlm = document.getElementById('botaoSomFlm');
+
+if (musicaFundoFlm && botaoSomFlm) {
+  botaoSomFlm.addEventListener('click', () => {
+    if (musicaFundoFlm.paused) {
+      musicaFundoFlm.play();
+    } else {
+      musicaFundoFlm.pause();
+    }
+  });
+}

@@ -1,19 +1,9 @@
 const quizData = [
   {
-    question: "Qual foi o melhor jogador dos games?",
-    options: ["Maradona", "Pelé", "Ronaldo", "Allejo"],
-    answer: "Allejo"
+    question: "Pergunta",
+    options: ["Opção 1", "Opção 2", "Opção 3", "Opção 4"],
+    answer: "Opção 2"
   },
-  {
-    question: "Em qual console nasceu o Mario?",
-    options: ["PlayStation", "Atari", "NES", "Mega Drive"],
-    answer: "NES"
-  },
-  {
-    question: "Qual desses é um Pokémon elétrico?",
-    options: ["Charmander", "Squirtle", "Pikachu", "Bulbasaur"],
-    answer: "Pikachu"
-  }
 ];
 
 let currentQuestion = 0;
@@ -24,7 +14,6 @@ const questionNumber = document.getElementById("question-number");
 const optionsContainer = document.getElementById("options-container");
 const nextBtn = document.getElementById("next-btn");
 const resultContainer = document.getElementById("result");
-
 function loadQuestion() {
   const questionData = quizData[currentQuestion];
   questionText.textContent = questionData.question;
