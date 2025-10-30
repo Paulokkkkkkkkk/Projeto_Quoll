@@ -34,6 +34,71 @@ const quizData = [
     options: ["5", "10", "8", "4"],
     answer: "7"
   },
+      {
+    question: "Que tipo de médico é o Doutor Estranho?",
+    options: ["Neurocirurgião", "Pediatra", "Urologista", "Psiquiatra"],
+    answer: "Neurocirurgião"
+  },
+        {
+    question: "Essa frase é de qual desses filmes: 'Bom dia, e caso eu não te veja, boa tarde, boa noite e boa noite!'?",
+    options: ["Deadpool 2", "Super Mario Bros", "O Show de Truman", "Tá Rindo do Quê?"],
+    answer: "O Show de Truman"
+  },
+          {
+    question: "Qual o filme mais lucrativo de todos os tempos?",
+    options: ["Titanic (1997)", "Avatar (2009)", "Vingadores: Ultimato (2019)", "Star Wars: O Despertar da Força (2015)"],
+    answer: "Avatar (2009)"
+  },
+      {
+    question: "Qual era o número da questão anterior?",
+    options: ["9", "7", "10", "6"],
+    answer: "10"
+  },
+  {
+    question: "Quantas sequências a saga 'X-MEN' possui?",
+    options: ["7", "5", "10", "13"],
+    answer: "13"
+  },
+    {
+    question: "Qual desses filme NÃO é do gênero ação?",
+    options: ["Thunderbolts*", "Ex_Machina: Instinto Artificial", "Upgrade: Atualização", "Trovão Tropical"],
+    answer: "Ex_Machina: Instinto Artificial"
+  },
+    {
+    question: "Qual desses filmes CONTÉM o gênero romance?",
+    options: ["Melancolia", "Gente Grande", "Jumanji", "A Forma da Água "],
+    answer: "A Forma da Água "
+  },
+    {
+    question: "Dentre as opções a seguir, qual delas NÃO é um filme?",
+    options: ["Game of Thrones", "A Viagem de Chihiro", "Turbo Kid", "O Justiceiro"],
+    answer: "Game of Thrones"
+  },
+      {
+    question: "Qual desses filmes é brasileiro?",
+    options: ["Esqueceram de Mim", "Todo Poderoso", "Pixels", "Bingo: O Rei das Manhãs"],
+    answer: "Bingo: O Rei das Manhãs"
+  },
+      {
+    question: "Qual o filme de videogame com a maior bilheteria?",
+    options: ["Minecraft: O filme", "Pokémon: Detetive Pikachu", "Super Mario Bros", "Mortal Kombat: O Filme."],
+    answer: "Super Mario Bros"
+  },
+      {
+    question: "O filme mais esperado pros cinemas atualmente (Pergunta de 2025)",
+    options: ["Wicked: Parte 2", "Five Nights At Freddy's 2", "Mortal Kombat II", "Vingadores: Doomsday"],
+    answer: "Wicked: Parte 2"
+  },
+      {
+    question: "Qual é o filme mais assistido da Netflix?",
+    options: ["A Sociedade da Neve", "Alerta Vermelho", "Guerreiras do K-Pop", "Bagagem de Risco"],
+    answer: "Guerreiras do K-Pop"
+  },
+     {
+    question: "Qual o filme em animação mais visto no cinema brasileiro?",
+    options: ["Divertida Mente 2", "Frozen: Uma Aventura Congelante", "Shrek 2", "Meu Malvado Favorito"],
+    answer: "Divertida Mente 2"
+  },
 ];
 
 let currentQuestion = 0;
