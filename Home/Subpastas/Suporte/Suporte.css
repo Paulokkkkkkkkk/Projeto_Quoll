@@ -90,3 +90,25 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+
+
+.site-logo {
+  
+    height: 60px; 
+   
+    width: auto; 
+   
+    margin-bottom: 20px; 
+}
+
+
+header {
+    text-align: center; 
+}
+
+
+.logo-link {
+  text-decoration: none; 
+  display: inline-block;
+}
+
