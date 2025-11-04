@@ -102,3 +102,16 @@ function showResult() {
 }
 
 loadQuestion();
+
+const musicaFundoCE = document.getElementById('musicaFundoCE');
+const botaoSomCE = document.getElementById('botaoSomCE');
+
+if (musicaFundoCE && botaoSomCE) {
+  botaoSomCE.addEventListener('click', () => {
+    if (musicaFundoCE.paused) {
+      musicaFundoCE.play();
+    } else {
+      musicaFundoCE.pause();
+    }
+  });
+}

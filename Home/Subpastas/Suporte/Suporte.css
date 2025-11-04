@@ -93,12 +93,28 @@ footer a:hover {
 
 
 .site-logo {
-  
-    height: 60px; 
-   
-    width: auto; 
-   
-    margin-bottom: 20px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-logo img {
+ height: 180px; /* Tente um valor um pouco maior, como 90px, se 80px for muito pequeno */
+width: auto;
+
+}
+
+header {
+  background-color: #1a1a5f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 130px; /* reduzido proporcionalmente ao novo tamanho da logo */
+  padding: 15px 0;
+}
+
+.site-logo img:hover {
+  transform: scale(1.05); /* Efeito sutil ao passar o mouse */
 }
 
 
@@ -112,3 +128,13 @@ header {
   display: inline-block;
 }
 
+.intro-text {
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.intro-text {
+    margin-top: 40px;
+}
