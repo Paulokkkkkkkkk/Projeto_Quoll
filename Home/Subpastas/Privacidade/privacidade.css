@@ -6,47 +6,92 @@ body {
   padding: 0;
 }
 
+/* ====== CABEÇALHO / LOGO ====== */
+.site-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-logo img {
+ height: 180px; /* Tente um valor um pouco maior, como 90px, se 80px for muito pequeno */
+width: auto;
+
+}
+
 header {
-  text-align: center;
-  padding: 20px 0;
   background-color: #1a1a5f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 130px; /* reduzido proporcionalmente ao novo tamanho da logo */
+  padding: 15px 0;
 }
 
-header h1 {
-  font-size: 2.5rem;
-  color: #ff9800;
+.site-logo img:hover {
+  transform: scale(1.05); /* Efeito sutil ao passar o mouse */
 }
 
+.logo-link {
+  text-decoration: none; 
+  display: inline-block;
+}
+
+/* ====== CONTEÚDO PRINCIPAL ====== */
 main {
   max-width: 800px;
-  margin: 30px auto;
-  padding: 20px;
-  background-color: rgba(0,0,0,0.5);
+  margin: 40px auto;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.45);
   border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
 }
 
 h2, h3 {
   color: #ffb84d;
+  margin-bottom: 12px;
 }
 
 p {
   line-height: 1.6;
+  margin-bottom: 15px;
 }
 
+/* ====== BOTÃO VOLTAR ====== */
 .btn-voltar {
-    display: block;
-    width: 30%; /* Ajuste a largura se necessário */
-    margin: 20px auto 0; /* Centraliza */
-    padding: 10px 20px;
-    background-color: #FF6600; /* Laranja */
-    border: none;
-    border-radius: 8px;
-    color: #FFF;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s;
+  display: block;
+  width: 200px; /* largura mais proporcional */
+  margin: 30px auto 0; /* centralizado */
+  padding: 10px 20px;
+  background-color: #FF6600; /* Laranja */
+  border: none;
+  border-radius: 8px;
+  color: #FFF;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .btn-voltar:hover {
-    background-color: #DD5900; /* Laranja mais escuro */
+  background-color: #DD5900; /* Laranja mais escuro */
+}
+
+/* ====== AJUSTE RESPONSIVO ====== */
+@media (max-width: 600px) {
+  header {
+    height: 120px;
+  }
+
+  .site-logo img {
+    height: 80px;
+  }
+
+  main {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .btn-voltar {
+    width: 80%;
+  }
 }
