@@ -95,3 +95,51 @@ p {
     width: 80%;
   }
 }
+
+#botaoSom {
+    /* 1. POSICIONAMENTO (Mantendo fixo no topo direito) */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    
+    /* 2. FORMA E CORES (Alinhando com o tema Quoll) */
+    width: 45px;      /* Um pouco maior */
+    height: 45px;
+    border-radius: 50%;
+    
+    /* Usando a cor de destaque (laranja/amarelo) do seu logo */
+    background-color: #FFB347; /* Um tom de laranja/amarelo */
+    color: #1A0A40;          /* Cor escura para o ícone, para contraste */
+    
+    border: 2px solid #FFFFFF; /* Borda branca sutil para realçar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Sombra para dar profundidade */
+    cursor: pointer;
+    
+    /* 3. ALINHAMENTO DO ÍCONE */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+    
+    /* 4. ANIMAÇÃO */
+    transition: all 0.3s ease; /* Transição suave para hover e clique */
+}
+
+/* Efeito ao passar o mouse */
+#botaoSom:hover {
+    background-color: #FFC06F; /* Laranja mais claro */
+    transform: scale(1.1);   /* Aumenta ligeiramente */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Efeito ao clicar (opcional, mas bom para feedback) */
+#botaoSom:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo do ícone dentro do botão (garantir que não seja selecionável) */
+#botaoSom i {
+    pointer-events: none;
+}
