@@ -1,10 +1,11 @@
 const quizData = [
   {
-    question: "Pergunta",
+    question: "",
     options: ["", "", "", ""],
     answer: ""
   },
 ];
+
 
 let currentQuestion = 0;
 let score = 0;
@@ -14,6 +15,7 @@ const questionNumber = document.getElementById("question-number");
 const optionsContainer = document.getElementById("options-container");
 const nextBtn = document.getElementById("next-btn");
 const resultContainer = document.getElementById("result");
+
 function loadQuestion() {
   const questionData = quizData[currentQuestion];
   questionText.textContent = questionData.question;
@@ -66,3 +68,16 @@ function showResult() {
 }
 
 loadQuestion();
+
+const musicaFundoCE = document.getElementById('musicaFundoCE');
+const botaoSomCE = document.getElementById('botaoSomCE');
+
+if (musicaFundoCE && botaoSomCE) {
+  botaoSomCE.addEventListener('click', () => {
+    if (musicaFundoCE.paused) {
+      musicaFundoCE.play();
+    } else {
+      musicaFundoCE.pause();
+    }
+  });
+}

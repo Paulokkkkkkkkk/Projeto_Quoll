@@ -1,45 +1,10 @@
 const quizData = [
   {
-    question: "Qual a raíz de 4?",
-    options: ["7", "2", "4", "3"],
-    answer: "2"
-  },
-   {
-    question: "qual o numero primo entre 4 e 8?",
-    options: ["6", "7", "8", "9"],
-    answer: "7"
-  },
- {
-    question: "formula quimica do dioxido de carbono?",
-    options: ["CO", " CO²", "O²", "C²O"],
-    answer: "CO²"
-  },
-
-{
-    question: "qual o simbolo do elemento oxigenio?",
-    options: ["O", " Ox", "Og", "oxg"],
-    answer: "O"
-  },
-
-{
-    question: "Acido comum no estomago (acido cloridrico) tem formula:",
-    options: ["H²O", "HCl", "naCl", "H²SO4"],
-    answer: "HCl"
-  },
-
-{
-    question: "A luz viaja mais rapido em:",
-    options: ["Ar", "Agua", "vidro", "vacuo"],
-    answer: "vacuo"
-  },
-
-{
-    question: "o que ê uma mistura de duas ou mais substancias onde uma esta dissovilda na outra?",
-    options: ["elementos", "mistura heterogenea", "solução", "compostos"],
-    answer: "solução"
+    question: "",
+    options: ["", "", "", ""],
+    answer: ""
   },
 ];
-
 
 let currentQuestion = 0;
 let score = 0;
@@ -67,19 +32,32 @@ function loadQuestion() {
 
 function selectOption(selected, correctAnswer) {
   const options = document.querySelectorAll(".option");
-  options.forEach(opt => {
+
+  options.forEach((opt) => {
     opt.style.pointerEvents = "none";
-    if (opt.textContent === correctAnswer) {
+
+    // Detecta se o conteúdo é imagem
+    const img = opt.querySelector("img");
+    const isCorrect =
+      img && img.src.includes(correctAnswer) || opt.textContent === correctAnswer;
+
+    if (isCorrect) {
       opt.classList.add("correct");
     }
   });
 
-  if (selected.textContent === correctAnswer) {
+  const selectedImg = selected.querySelector("img");
+  const isSelectedCorrect =
+    selectedImg && selectedImg.src.includes(correctAnswer) || selected.textContent === correctAnswer;
+
+  if (isSelectedCorrect) {
+    selected.classList.add("correct");
     score++;
   } else {
-    selected.classList.add("incorrect");
+    selected.classList.add("wrong");
   }
 }
+
 
 nextBtn.addEventListener("click", () => {
   currentQuestion++;
@@ -103,15 +81,31 @@ function showResult() {
 
 loadQuestion();
 
-const musicaFundoCE = document.getElementById('musicaFundoCE');
-const botaoSomCE = document.getElementById('botaoSomCE');
+function loadQuestion() {
+  const questionData = quizData[currentQuestion];
+  questionText.textContent = questionData.question;
+  questionNumber.textContent = `${currentQuestion + 1}.`;
 
-if (musicaFundoCE && botaoSomCE) {
-  botaoSomCE.addEventListener('click', () => {
-    if (musicaFundoCE.paused) {
-      musicaFundoCE.play();
+  optionsContainer.innerHTML = "";
+  questionData.options.forEach((opt) => {
+    const optionBtn = document.createElement("div");
+    optionBtn.classList.add("option");
+
+    // Verifica se é uma imagem (termina com .png, .jpg, etc)
+    if (opt.endsWith(".png") || opt.endsWith(".jpg") || opt.endsWith(".jpeg") || opt.endsWith(".gif")) {
+      const img = document.createElement("img");
+      img.src = opt;
+      img.alt = "Opção de resposta";
+      img.style.width = "120px";  // ajusta o tamanho como quiser
+      img.style.height = "auto";
+      optionBtn.appendChild(img);
     } else {
-      musicaFundoCE.pause();
+      // Se for texto normal
+      optionBtn.textContent = opt;
     }
+
+    optionBtn.addEventListener("click", () => selectOption(optionBtn, questionData.answer));
+    optionsContainer.appendChild(optionBtn);
   });
 }
+

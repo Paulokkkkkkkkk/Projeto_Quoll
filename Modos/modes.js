@@ -1,13 +1,20 @@
+
 function abrirModos() {
-  fetch("/Modos/modos.html")
+  fetch('../Modos/modos.html') // Caminho corrigido
     .then(res => res.text())
     .then(html => {
       const popup = document.getElementById("popup-modos");
-      popup.innerHTML = `<div>${html}</div>`;
+      popup.innerHTML = `<div id="conteudo-popup">${html}</div>`;
       popup.style.display = "flex";
-    });
-}
 
-function fecharModos() {
-  document.getElementById("popup-modos").style.display = "none";
+      // Fecha o popup ao clicar fora
+      document.addEventListener("click", function fecharPopup(event) {
+        const conteudo = document.getElementById("conteudo-popup");
+        if (popup.style.display === "flex" && !conteudo.contains(event.target)) {
+          popup.style.display = "none";
+          document.removeEventListener("click", fecharPopup);
+        }
+      });
+    })
+    .catch(err => console.error('Erro ao carregar modos:', err));
 }
