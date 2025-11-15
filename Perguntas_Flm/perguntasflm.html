@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz dos Games</title>
+  <title>Quiz dos Filmes</title>
 
   <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
@@ -12,31 +12,42 @@
   <link rel="stylesheet" href="/Perguntas_Flm/perguntasflm.css">
 </head>
 <body>
+
   <div class="quiz-container">
-    <div class="question-header">
-      <div class="circle">
-        <span id="question-number">1.</span>
+
+      <!-- Barra de progresso -->
+      <div class="progress-container">
+        <div id="progress-bar"></div>
       </div>
-      <h2 id="question-text"></h2>
-    </div>
 
-    <div id="options-container"></div>
+      <div class="question-header">
+        <div class="circle">
+          <span id="question-number">1.</span>
+        </div>
+        <h2 id="question-text"></h2>
+      </div>
 
-  <audio id="musicaFundoFlm" loop>
-  <source src="/Sons/Tema2.mp3" type="audio/mpeg">
-</audio>
+      <div id="options-container"></div>
 
-<button id="botaoSomFlm">🎵</button>
+      <!-- Música -->
+      <audio id="musicaFundoFlm" loop>
+        <source src="/Sons/Tema2.mp3" type="audio/mpeg">
+      </audio>
 
-    <button id="next-btn">Próxima</button>
-    <div id="result" class="hidden"></div>
+      <button id="botaoSomFlm" class="btn-som">🎵</button>
+
+      <button id="next-btn">Próxima</button>
+
+      <div id="result" class="hidden"></div>
   </div>
 
   <footer>
     <p>© 2025 Quoll. Todos os direitos reservados.</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="/Perguntas_Flm/perguntasflm.js"></script>
-<script src="Sons/audio.js"></script>
+  <script src="/Sons/audio.js"></script>
+
 </body>
-</ht
+</html>
