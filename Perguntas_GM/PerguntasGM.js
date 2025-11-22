@@ -45,59 +45,59 @@ const quizData = [
     answer: "Fifa"
   },
       {
-    question: "",
-    options: ["", "", "", ""],
-    answer: ""
+    question: "Quais desses jogos é considerado indie (Produção independente)?",
+    options: ["GTA V", "Death Stranding", "Ena Dream BBQ", "Little Nightmares"],
+    answer: "Ena Dream BBQ"
   },
       {
-    question: "",
-    options: ["", "", "", ""],
-    answer: ""
+    question: "Qual desses jogos NÃO é do gênero 'terror'?",
+    options: ["Silent Hill", "God of War", "Poppy Playtime", "Buckshot Roulette"],
+    answer: "God of War"
   },
       {
-    question: "",
-    options: ["", "", "", ""],
-    answer: ""
+    question: "Qual jogo ganhou o prêmio GOTY(Melhor jogo) de 2024?",
+    options: ["Astro Bot", "Balatro", "Final Fantasy VII: Rebirth", "Black Myth: Wukong"],
+    answer: "Astro Bot"
   },
       {
-    question: "",
-    options: ["", "", "", ""],
-    answer: ""
+    question: "Qual desses jogos ganhou uma série animada?",
+    options: ["Red Dead Redemption", "Cuphead", "Minecraft", "Brawl stars"],
+    answer: "Cuphead"
   },
       {
-    question: "",
-    options: ["", "", "", ""],
-    answer: ""
+    question: "Desses jogos, qual deles é brasileiro?",
+    options: ["Friday Night Funkin", "Balatro", "171", "Despelote"],
+    answer: "171"
   },
       {
-    question: "",
-    options: ["", "", "", ""],
-    answer: ""
+    question: "Qual o jogo mais lucrativo até o momento?",
+    options: ["Minecraft", "Fifa", "GTA V", "Tetris"],
+    answer: "GTA V"
   },
       {
-    question: "",
-    options: ["", "", "", ""],
-    answer: ""
+    question: "Qual o jogo mais antigo já registrado?",
+    options: ["Tetris", "OXO", "Tennis for Two", "Spacewar!"],
+    answer: "OXO"
   },
       {
-    question: "",
-    options: ["", "", "", ""],
-    answer: ""
+    question: "Qual o jogo de celular mais jogado no mundo?",
+    options: ["Roblox", "Free Fire", " Candy Crush Saga", "Subway Surfers"],
+    answer: "Roblox"
   },
       {
-    question: "",
-    options: ["", "", "", ""],
-    answer: ""
+    question: "Qual empresa criou 'Sonic'?",
+    options: ["Ubisoft", "Nintendo", "Sega", "EA"],
+    answer: "Sega"
   },
       {
-    question: "",
-    options: ["", "", "", ""],
-    answer: ""
+    question: "O que significa 'GOTY'?",
+    options: ["Graphic Overhaul Technology Yield", "Game Option Type Yearly", "Goal of the Year", "Game of the Year"],
+    answer: "Game of the Year"
   },
       {
-    question: "",
-    options: ["", "", "", ""],
-    answer: ""
+    question: "Qual o primeiro deus que Kratos matou na saga de God of War",
+    options: ["Hades", "Ares", "Poseidon", "Perséfone"],
+    answer: "Ares"
   },
 ];
 
