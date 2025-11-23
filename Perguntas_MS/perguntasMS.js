@@ -1,5 +1,100 @@
 const quizData = [
   {
+    question: "Em qual ano o 'Minecraft' foi criado?",
+    options: ["2011", "2009", "2010", "2008"],
+    answer: "2009"
+  },
+  {
+    question: "Quais são os personagens principais do Minecraft? ",
+    options: ["Finn e Jake", "Steve e Andy", "Stevan e Alex", "Steve e Alex"],
+    answer: "Steve e Alex"
+  },  
+  {
+    question: "Qual é o mascote do Minecraft?? ",
+    options: ["Creeper", "Porco", "Enderman", "Iron Golem"],
+    answer: "Creeper"
+  },
+  {
+    question: "Qual o maior medo do Creeper?? ",
+    options: ["Felinos", "Lobos", "Sol", "Água"],
+    answer: "Felinos"
+  },
+  {
+    question: "O que acontece se renomear uma ovelha para 'jeb_'? ",
+    options: ["Ela fica de cabeça pra baixo", "Ela fica mudando a cor", "Ela começa à nos atacar", "Absolutamente nada"],
+    answer: "Ela fica mudando a cor"
+  },
+  {
+    question: "Quantos corações tem o mob Warden?? ",
+    options: ["100", "150", "200", "250"],
+    answer: "250"
+  },
+   {
+    question: "Em qual versão a abelha foi adicionada no Minecraft Java? ",
+    options: ["1.14", "1.15", "1.13", "1.16"],
+    answer: "1.15"
+  },
+  {
+    question: "Qual é o mod mais popular do Minecraft?",
+    options: ["RLCraft", "Mutant Mobs", "OptiFine", "Just Enough Items"],
+    answer: "Just Enough Items"
+  },
+  {
+    question: "Como se chama o local em que fica o portal do 'End'?",
+    options: ["Stronghold", "Stronghoud", "End Portal", "Holdstrong"],
+    answer: "stronghold"
+  },
+  {
+    question: "Qual dessas picaretas quebra mais rápido?",
+    options: ["Madeira", "Ouro", "Cobre", "Esmeralda"],
+    answer: "Ouro"
+  },
+  {
+    question: "O creeper foi um erro, mas ele era para ser o qual mob?",
+    options: ["Porco", "Galinha", "Zumbi", "Slime"],
+    answer: "Porco"
+  },
+  {
+    question: "Quantos pixels tem um bloco normal?",
+    options: ["15x15", "32x32", "10x10", "16x16"],
+    answer: "16x16"
+  },
+  {
+    question: "Quantos espaços tem em uma shulker box?",
+    options: ["27", "32", "22", "28"],
+    answer: "27"
+  },
+  {
+    question: "Quanto de vida tem o player?",
+    options: ["10", "20", "12", "8"],
+    answer: "20"
+  },
+  {
+    question: "",
+    options: ["", "", "", ""],
+    answer: ""
+  },
+  {
+    question: "",
+    options: ["", "", "", ""],
+    answer: ""
+  },
+  {
+    question: "",
+    options: ["", "", "", ""],
+    answer: ""
+  },
+  {
+    question: "",
+    options: ["", "", "", ""],
+    answer: ""
+  },
+  {
+    question: "",
+    options: ["", "", "", ""],
+    answer: ""
+  },
+  {
     question: "",
     options: ["", "", "", ""],
     answer: ""
