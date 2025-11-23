@@ -99,9 +99,7 @@ footer {
   text-align: center;
 }
 
-/* Garante que o contador de vidas fique visível acima de todos os outros elementos */
 #lives-status {
-    /* Já está no HTML inline, mas é bom repetir para prioridade */
     position: absolute;
     top: 20px;
     right: 20px;
