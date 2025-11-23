@@ -1,43 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz dos Games</title>
-
-  <!-- Fonte -->
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-
-  <!-- Estilo -->
-  <link rel="stylesheet" href="/Perguntas_GM/PerguntasGM.css">
+    <link rel="stylesheet" href="/Perguntas_GM/PerguntasGM.css">
 </head>
 <body>
-  <div class="quiz-container">
-    <div class="question-header">
-      <div class="circle">
-        <span id="question-number">1.</span>
-      </div>
-      <h2 id="question-text"></h2>
+
+    <div id="lives-status" style="position: absolute; top: 20px; right: 20px; font-size: 24px; color: white; z-index: 100;">
+        Vidas: <span id="lives-counter">3</span>
     </div>
 
-    <div id="options-container"></div>
+    <div class="quiz-container">
+        <div class="question-header">
+            <div class="circle">
+                <span id="question-number">1.</span>
+            </div>
+            <h2 id="question-text"></h2>
+        </div>
 
-  <audio id="musicaFundoCE" loop>
-  <source src="/Sons/Tema4.mp3" type="audio/mpeg">
-</audio>
+        <div id="options-container"></div>
 
-<button id="botaoSomCE">🎵</button>
+        <audio id="musicaFundoCE" loop>
+            <source src="/Sons/Tema4.mp3" type="audio/mpeg">
+        </audio>
 
-    <button id="next-btn">Próxima</button>
-    <div id="result" class="hidden"></div>
-  </div>
+        <button id="botaoSomCE">🎵</button>
 
-  <footer>
-    <p>© 2025 Quoll. Todos os direitos reservados.</p>
-  </footer>
+        <button id="next-btn">Próxima</button>
+        <div id="result" class="hidden"></div>
+    </div>
 
-  <script src="/Perguntas_GM/PerguntasGM.js"></script>
-  <script src="/Sons/audio.js"></script>
+    <footer>
+        <p>© 2025 Quoll. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="/Perguntas_GM/PerguntasGM.js"></script>
+    <script src="/Sons/audio.js"></script>
 
 </body>
-</ht
+</html>

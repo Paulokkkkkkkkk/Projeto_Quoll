@@ -98,3 +98,17 @@ footer {
   width: 100%;
   text-align: center;
 }
+
+/* Garante que o contador de vidas fique visível acima de todos os outros elementos */
+#lives-status {
+    /* Já está no HTML inline, mas é bom repetir para prioridade */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: rgb(17, 2, 2);
+    z-index: 100; /* Define a prioridade alta de exibição */
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo sutil para destaque */
+}
