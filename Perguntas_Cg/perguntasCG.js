@@ -166,20 +166,91 @@ function showResult() {
   `;
 }
 
-loadQuestion();
+// ---------------------- FUNÇÕES PRINCIPAIS ----------------------
 
-// ---------------------- CONTROLE DE ÁUDIO ----------------------
+function loadQuestion() {
+  const q = orderedQuestions[currentQuestion];
+  questionText.textContent = q.question;
+  questionNumber.textContent = `${currentQuestion + 1}.`;
 
-// O código abaixo é referente à música:
-const musicaFundoCE = document.getElementById('musicaFundoCE');
-const botaoSomCE = document.getElementById('botaoSomCE');
+  // Atualizar barra de progresso
+  let progress = ((currentQuestion) / orderedQuestions.length) * 100;
+  if (progressBar) progressBar.style.width = progress + "%";
+  
+  // 💖 Garante que o contador de vidas esteja visível
+  updateLivesDisplay(); 
 
-if (musicaFundoCE && botaoSomCE) {
-  botaoSomCE.addEventListener('click', () => {
-    if (musicaFundoCE.paused) {
-      musicaFundoCE.play();
+  optionsContainer.innerHTML = "";
+
+  q.options.forEach(opt => {
+    const optionBtn = document.createElement("div");
+    optionBtn.classList.add("option");
+
+    // Se for imagem
+    if (opt.endsWith(".png") || opt.endsWith(".jpg") || opt.endsWith(".jpeg") || opt.endsWith(".gif")) {
+      const img = document.createElement("img");
+      img.src = opt;
+      img.alt = "Opção";
+      img.classList.add("img-option");
+      optionBtn.appendChild(img);
     } else {
-      musicaFundoCE.pause();
+      optionBtn.textContent = opt;
     }
+
+    optionBtn.addEventListener("click", () => selectOption(optionBtn, q.answer));
+    optionsContainer.appendChild(optionBtn);
   });
 }
+
+// 🟢 FUNÇÃO selectOption: Adicionando a lógica de vidas (Lives)
+function selectOption(selected, correctAnswer) {
+  const options = document.querySelectorAll(".option");
+
+  options.forEach(opt => opt.style.pointerEvents = "none");
+  
+  // Checa se a resposta é correta (suporta texto e imagem)
+  const selectedImg = selected.querySelector("img");
+  const isCorrect = selectedImg
+    ? selectedImg.src.includes(correctAnswer)
+    : selected.textContent === correctAnswer;
+
+  if (isCorrect) {
+    selected.classList.add("correct");
+    score++;
+  } else {
+    selected.classList.add("wrong");
+    
+    // 💔 Diminui uma vida em caso de erro
+    lives--;
+    updateLivesDisplay();
+
+    // Mostra a resposta correta
+    options.forEach((opt) => {
+        const optImg = opt.querySelector("img");
+        const isAnswer = (optImg && optImg.src.includes(correctAnswer)) || opt.textContent === correctAnswer;
+        if (isAnswer) {
+            opt.classList.add("correct");
+        }
+    });
+
+    // 🛑 VERIFICAÇÃO DE FIM DE JOGO POR ERROS
+    if (lives <= 0) {
+        showEndGame("VOCÊ PERDEU!", "Você errou demais e perdeu todas as suas vidas.", orderedQuestions.length);
+        return; 
+    }
+  }
+  // Ativa o botão Próxima
+  nextBtn.style.pointerEvents = "auto";
+}
+
+nextBtn.addEventListener("click", () => {
+  currentQuestion++;
+  if (currentQuestion < orderedQuestions.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
+});
+
+// Iniciar o Quiz
+loadQuestion();
