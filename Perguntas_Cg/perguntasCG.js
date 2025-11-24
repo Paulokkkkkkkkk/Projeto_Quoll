@@ -109,140 +109,77 @@ const quizData = [
 
 let currentQuestion = 0;
 let score = 0;
-let lives = 3; // 🟢 Variável para rastrear as vidas
 
 const questionText = document.getElementById("question-text");
 const questionNumber = document.getElementById("question-number");
 const optionsContainer = document.getElementById("options-container");
 const nextBtn = document.getElementById("next-btn");
 const resultContainer = document.getElementById("result");
-
-// ✅ CORREÇÃO AQUI: Alinhando o ID do JS com o ID "lives-counter" que está no seu HTML
-const livesDisplay = document.getElementById("lives-counter"); 
-
-
-// 🟢 FUNÇÃO AUXILIAR: Para atualizar a exibição das vidas
-function updateLivesDisplay() {
-    if (livesDisplay) {
-        livesDisplay.textContent = lives;
-    }
-    // Para fins de debug no console
-    console.log(`Vidas restantes: ${lives}`); 
-}
-
-// 🟢 FUNÇÃO loadQuestion: Inclui a chamada de updateLivesDisplay()
 function loadQuestion() {
-  const questionData = quizData[currentQuestion];
-  questionText.textContent = questionData.question;
-  questionNumber.textContent = `${currentQuestion + 1}.`;
+  const questionData = quizData[currentQuestion];
+  questionText.textContent = questionData.question;
+  questionNumber.textContent = `${currentQuestion + 1}.`;
 
-  // Chama a função para garantir que as vidas estejam corretas ao iniciar ou carregar
-  updateLivesDisplay();
-
-  optionsContainer.innerHTML = "";
-  questionData.options.forEach((opt) => {
-    const optionBtn = document.createElement("div");
-    optionBtn.classList.add("option");
-
-    // Verifica se é uma imagem (termina com .png, .jpg, etc)
-    if (opt.endsWith(".png") || opt.endsWith(".jpg") || opt.endsWith(".jpeg") || opt.endsWith(".gif")) {
-      const img = document.createElement("img");
-      img.src = opt;
-      img.alt = "Opção de resposta";
-      img.style.width = "120px";  // ajusta o tamanho como quiser
-      img.style.height = "auto";
-      optionBtn.appendChild(img);
-    } else {
-      // Se for texto normal
-      optionBtn.textContent = opt;
-    }
-
-    optionBtn.addEventListener("click", () => selectOption(optionBtn, questionData.answer));
-    optionsContainer.appendChild(optionBtn);
-  });
+  optionsContainer.innerHTML = "";
+  questionData.options.forEach((opt) => {
+    const optionBtn = document.createElement("div");
+    optionBtn.classList.add("option");
+    optionBtn.textContent = opt;
+    optionBtn.addEventListener("click", () => selectOption(optionBtn, questionData.answer));
+    optionsContainer.appendChild(optionBtn);
+  });
 }
 
-// 🟢 FUNÇÃO selectOption: Implementação do sistema de vidas
 function selectOption(selected, correctAnswer) {
-  const options = document.querySelectorAll(".option");
+  const options = document.querySelectorAll(".option");
+  options.forEach(opt => {
+    opt.style.pointerEvents = "none";
+    if (opt.textContent === correctAnswer) {
+      opt.classList.add("correct");
+    }
+  });
 
-  options.forEach((opt) => {
-    opt.style.pointerEvents = "none";
-  });
-
-  const selectedImg = selected.querySelector("img");
-  const isSelectedCorrect =
-    (selectedImg && selectedImg.src.includes(correctAnswer)) || selected.textContent === correctAnswer;
-
-  if (isSelectedCorrect) {
-    selected.classList.add("correct");
-    score++;
-  } else {
-    selected.classList.add("wrong");
-    
-    // 💔 Diminui uma vida em caso de erro
-    lives--;
-    updateLivesDisplay();
-
-    // Adiciona a classe 'correct' na resposta certa para mostrar ao jogador
-    options.forEach((opt) => {
-      const optImg = opt.querySelector("img");
-      const isCorrect = (optImg && optImg.src.includes(correctAnswer)) || opt.textContent === correctAnswer;
-      if (isCorrect) {
-          opt.classList.add("correct");
-      }
-    });
-
-    // 🛑 VERIFICAÇÃO DE FIM DE JOGO POR ERROS
-    if (lives <= 0) {
-      // Chama a função de fim de jogo com a mensagem de derrota
-      showEndGame("VOCÊ PERDEU!", "Você errou demais e perdeu todas as suas vidas.");
-      return; // Impede que o botão "Próxima" seja ativado
-    }
-  }
-  // Deixa o botão "Próxima" pronto para o clique
-  // Adicione esta linha: nextBtn.style.display = "block"; se você o escondeu inicialmente
-  nextBtn.style.pointerEvents = "auto";
+  if (selected.textContent === correctAnswer) {
+    score++;
+  } else {
+    selected.classList.add("incorrect");
+  }
 }
-
 
 nextBtn.addEventListener("click", () => {
-  currentQuestion++;
-  if (currentQuestion < quizData.length) {
-    loadQuestion();
-  } else {
-    // Chama a função showResult (que agora usa showEndGame)
-    showResult();
-  }
+  currentQuestion++;
+  if (currentQuestion < quizData.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
 });
 
-// 🟢 FUNÇÃO showResult: Adaptada para chamar showEndGame
 function showResult() {
-  showEndGame(
-    "Quiz Finalizado!",
-    `Parabéns! Você acertou ${score} de ${quizData.length} perguntas!`
-  );
-}
-
-// 🟢 FUNÇÃO showEndGame: Centralizada para finalizar o jogo (vitória ou derrota)
-function showEndGame(title, message) {
-  // Garante que os elementos do quiz sejam ocultados corretamente
-  const questionHeader = document.querySelector(".question-header");
-  if (questionHeader) {
-      questionHeader.classList.add("hidden");
-  }
-  optionsContainer.classList.add("hidden");
-  nextBtn.classList.add("hidden");
-  
-  // Mostra o resultado
-  resultContainer.classList.remove("hidden");
-  resultContainer.innerHTML = `
-    <h2>${title}</h2>
-     <p>${message}</p>
-     <p>Sua pontuação final foi: ${score} acerto(s).</p>
-    <a href="../Home/index.html" class="botao-voltar">Voltar ao Menu</a>
-  `;
+  document.querySelector(".question-header").classList.add("hidden");
+  optionsContainer.classList.add("hidden");
+  nextBtn.classList.add("hidden");
+  resultContainer.classList.remove("hidden");
+  resultContainer.innerHTML = `
+    <h2>Você acertou ${score} de ${quizData.length} perguntas!</h2>
+    <a href="../Home/index.html" class="botao-voltar">Voltar ao Menu</a>
+  `;
 }
 
 loadQuestion();
 
+// ---------------------- CONTROLE DE ÁUDIO ----------------------
+
+// O código abaixo é referente à música:
+const musicaFundoCE = document.getElementById('musicaFundoCE');
+const botaoSomCE = document.getElementById('botaoSomCE');
+
+if (musicaFundoCE && botaoSomCE) {
+  botaoSomCE.addEventListener('click', () => {
+    if (musicaFundoCE.paused) {
+      musicaFundoCE.play();
+    } else {
+      musicaFundoCE.pause();
+    }
+  });
+}
