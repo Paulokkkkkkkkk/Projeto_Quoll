@@ -106,64 +106,177 @@ const quizData = [
   }
 ];
 
+// ---------------------- VARIÁVEIS E INICIALIZAÇÃO ----------------------
 
+// Função shuffle (randomizar)
+function shuffle(arr) {
+  return arr.sort(() => Math.random() - 0.5);
+}
+
+// 1) Separar perguntas por dificuldade e randomizar
+const easy = shuffle(quizData.filter(q => q.level === "facil"));
+const medium = shuffle(quizData.filter(q => q.level === "medio"));
+const hard = shuffle(quizData.filter(q => q.level === "dificil"));
+
+// 2) Montar a ordem final: fáceis → médias → difíceis
+const orderedQuestions = [...easy, ...medium, ...hard];
+
+// Variáveis do jogo
 let currentQuestion = 0;
 let score = 0;
+let lives = 3; // 💖 O Jogo começa com 3 vidas
 
+// HTML Elements (DOM)
 const questionText = document.getElementById("question-text");
 const questionNumber = document.getElementById("question-number");
 const optionsContainer = document.getElementById("options-container");
 const nextBtn = document.getElementById("next-btn");
 const resultContainer = document.getElementById("result");
-function loadQuestion() {
-  const questionData = quizData[currentQuestion];
-  questionText.textContent = questionData.question;
-  questionNumber.textContent = `${currentQuestion + 1}.`;
+const progressBar = document.getElementById("progress-bar"); 
+const livesDisplay = document.getElementById("lives-counter"); // ✅ Busca o elemento de vidas
 
-  optionsContainer.innerHTML = "";
-  questionData.options.forEach((opt) => {
-    const optionBtn = document.createElement("div");
-    optionBtn.classList.add("option");
-    optionBtn.textContent = opt;
-    optionBtn.addEventListener("click", () => selectOption(optionBtn, questionData.answer));
-    optionsContainer.appendChild(optionBtn);
-  });
+// ---------------------- FUNÇÕES DE VIVAS E RESULTADOS ----------------------
+
+// 🟢 FUNÇÃO AUXILIAR: Atualiza a exibição de vidas na tela
+function updateLivesDisplay() {
+    if (livesDisplay) {
+        livesDisplay.textContent = lives;
+    }
 }
 
-function selectOption(selected, correctAnswer) {
-  const options = document.querySelectorAll(".option");
-  options.forEach(opt => {
-    opt.style.pointerEvents = "none";
-    if (opt.textContent === correctAnswer) {
-      opt.classList.add("correct");
-    }
-  });
-
-  if (selected.textContent === correctAnswer) {
-    score++;
-  } else {
-    selected.classList.add("incorrect");
+// 🟢 FUNÇÃO showEndGame: Centralizada para finalização (Vitória ou Derrota)
+function showEndGame(title, message, totalQuestions) {
+  // Oculta elementos do quiz
+  const questionHeader = document.querySelector(".question-header");
+  if (questionHeader) {
+      questionHeader.classList.add("hidden");
   }
+  optionsContainer.classList.add("hidden");
+  nextBtn.classList.add("hidden");
+  
+  // Oculta/Completa a barra de progresso
+  if (progressBar) progressBar.style.width = "100%"; 
+
+  // Exibe a tela de resultado
+  resultContainer.classList.remove("hidden");
+  resultContainer.innerHTML = `
+    <h2>${title}</h2>
+     <p>${message}</p>
+     <p>Sua pontuação final foi: ${score} acerto(s) de ${totalQuestions} perguntas.</p>
+    <a href="../Home/index.html" class="botao-voltar">Voltar ao Menu</a>
+  `;
+}
+
+// 🟢 FUNÇÃO showResult: Fim de jogo por conclusão
+function showResult() {
+  showEndGame(
+    "Quiz Finalizado!",
+    `Parabéns! Você acertou ${score} de ${orderedQuestions.length} perguntas!`,
+    orderedQuestions.length
+  );
+}
+
+// ---------------------- FUNÇÕES PRINCIPAIS ----------------------
+
+function loadQuestion() {
+  const q = orderedQuestions[currentQuestion];
+  questionText.textContent = q.question;
+  questionNumber.textContent = `${currentQuestion + 1}.`;
+
+  // Atualizar barra de progresso
+  let progress = ((currentQuestion) / orderedQuestions.length) * 100;
+  if (progressBar) progressBar.style.width = progress + "%";
+  
+  // 💖 Garante que o contador de vidas esteja visível
+  updateLivesDisplay(); 
+
+  optionsContainer.innerHTML = "";
+
+  q.options.forEach(opt => {
+    const optionBtn = document.createElement("div");
+    optionBtn.classList.add("option");
+
+    // Se for imagem
+    if (opt.endsWith(".png") || opt.endsWith(".jpg") || opt.endsWith(".jpeg") || opt.endsWith(".gif")) {
+      const img = document.createElement("img");
+      img.src = opt;
+      img.alt = "Opção";
+      img.classList.add("img-option");
+      optionBtn.appendChild(img);
+    } else {
+      optionBtn.textContent = opt;
+    }
+
+    optionBtn.addEventListener("click", () => selectOption(optionBtn, q.answer));
+    optionsContainer.appendChild(optionBtn);
+  });
+}
+
+// 🟢 FUNÇÃO selectOption: Adicionando a lógica de vidas (Lives)
+function selectOption(selected, correctAnswer) {
+  const options = document.querySelectorAll(".option");
+
+  options.forEach(opt => opt.style.pointerEvents = "none");
+  
+  // Checa se a resposta é correta (suporta texto e imagem)
+  const selectedImg = selected.querySelector("img");
+  const isCorrect = selectedImg
+    ? selectedImg.src.includes(correctAnswer)
+    : selected.textContent === correctAnswer;
+
+  if (isCorrect) {
+    selected.classList.add("correct");
+    score++;
+  } else {
+    selected.classList.add("wrong");
+    
+    // 💔 Diminui uma vida em caso de erro
+    lives--;
+    updateLivesDisplay();
+
+    // Mostra a resposta correta
+    options.forEach((opt) => {
+        const optImg = opt.querySelector("img");
+        const isAnswer = (optImg && optImg.src.includes(correctAnswer)) || opt.textContent === correctAnswer;
+        if (isAnswer) {
+            opt.classList.add("correct");
+        }
+    });
+
+    // 🛑 VERIFICAÇÃO DE FIM DE JOGO POR ERROS
+    if (lives <= 0) {
+        showEndGame("VOCÊ PERDEU!", "Você errou demais e perdeu todas as suas vidas.", orderedQuestions.length);
+        return; 
+    }
+  }
+  // Ativa o botão Próxima
+  nextBtn.style.pointerEvents = "auto";
 }
 
 nextBtn.addEventListener("click", () => {
-  currentQuestion++;
-  if (currentQuestion < quizData.length) {
-    loadQuestion();
-  } else {
-    showResult();
-  }
+  currentQuestion++;
+  if (currentQuestion < orderedQuestions.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
 });
 
-function showResult() {
-  document.querySelector(".question-header").classList.add("hidden");
-  optionsContainer.classList.add("hidden");
-  nextBtn.classList.add("hidden");
-  resultContainer.classList.remove("hidden");
-  resultContainer.innerHTML = `
-    <h2>Você acertou ${score} de ${quizData.length} perguntas!</h2>
-    <a href="../Home/index.html" class="botao-voltar">Voltar ao Menu</a>
-  `;
-}
-
+// Iniciar o Quiz
 loadQuestion();
+
+// ---------------------- CONTROLE DE ÁUDIO ----------------------
+
+// O código abaixo é referente à música:
+const musicaFundoCE = document.getElementById('musicaFundoCE');
+const botaoSomCE = document.getElementById('botaoSomCE');
+
+if (musicaFundoCE && botaoSomCE) {
+  botaoSomCE.addEventListener('click', () => {
+    if (musicaFundoCE.paused) {
+      musicaFundoCE.play();
+    } else {
+      musicaFundoCE.pause();
+    }
+  });
+}
