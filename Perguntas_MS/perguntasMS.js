@@ -7,14 +7,14 @@ const quizData = [
     answer: "Steve e Alex"
   },
   {
-    question: "Qual é o mascote do Minecraft?? ",
+    question: "Qual é o mascote do Minecraft?",
     options: ["Creeper", "Porco", "Enderman", "Iron Golem"],
     answer: "Creeper"
   },
-  {
-    question: "Quanto de vida tem o player?",
-    options: ["10", "20", "12", "8"],
-    answer: "20"
+{
+    question: "Qual é o drop de uma vaca?",
+    options: ["Bife e Couro", "Bife e Leite", "Leite e Couro", "Diamante e Cobre"],
+    answer: "Bife e Couro"
   },
   {
     question: "Qual dessas picaretas quebra mais rápido?",
@@ -26,12 +26,6 @@ const quizData = [
     options: ["3", "5", "2", "4"],
     answer: "4"
   },
-  {
-    question: "Quantos espaços tem em uma shulker box?",
-    options: ["27", "32", "22", "28"],
-    answer: "27"
-  },
-
   // ----------------------- MÉDIOS -----------------------
   {
     question: "Em qual ano o 'Minecraft' foi criado?",
@@ -42,6 +36,11 @@ const quizData = [
     question: "O que acontece se renomear uma ovelha para 'jeb_'? ",
     options: ["Ela fica de cabeça pra baixo", "Ela fica mudando a cor", "Ela começa à nos atacar", "Absolutamente nada"],
     answer: "Ela fica mudando a cor"
+  },
+  {
+    question: "Quantos espaços tem em uma shulker box?",
+    options: ["27", "32", "22", "28"],
+    answer: "27"
   },
   {
     question: "Qual o maior medo do Creeper?? ",
@@ -56,7 +55,7 @@ const quizData = [
   {
     question: "Como se chama o local em que fica o portal do 'End'?",
     options: ["Stronghold", "Stronghoud", "End Portal", "Holdstrong"],
-    answer: "stronghold"
+    answer: "Stronghold"
   },
   {
     question: "Quantos pixels tem um bloco normal?",
@@ -84,6 +83,11 @@ const quizData = [
     question: "Quantos corações tem o mob Warden?? ",
     options: ["100", "150", "200", "250"],
     answer: "250"
+  },
+  {
+    question: "Quanto de vida tem o player?",
+    options: ["10", "20", "12", "8"],
+    answer: "20"
   },
   {
     question: "Qual o boss mais forte do minecraft?",
