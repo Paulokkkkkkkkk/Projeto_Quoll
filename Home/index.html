@@ -20,87 +20,135 @@
   /* Cabeçalho */
   header {
     background-color: #001b66;
-    border-bottom: 1px solid white;  /* linha branca de contraste */
+    border-bottom: 1px solid white;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .menu {
-    font-size: 28px;
-  }
-
-  .direita {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .direita span {
-    font-size: 22px;
-  }
-
-  button {
-    background-color: #ff8c00;
-    color: white;
+  #botaoSom {
+    font-size: 24px;
+    background: none;
     border: none;
-    border-radius: 6px;
-    padding: 8px 18px;
+    color: white;
     cursor: pointer;
   }
 
-  button:hover {
-    background-color: #ff9f1a;
-  }
-
-  /* Logo */
   .logo {
     width: 120px;
     height: auto;
     margin-top: 40px;
   }
 
-  /* Texto explicativo */
-  .explicacao {
-    text-align: left;
-    margin: 30px 20px;
-  }
-
   /* Botões principais */
   .botoes {
     margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .linha {
     display: flex;
     justify-content: center;
     gap: 60px;
-    margin-bottom: 20px;
   }
 
-  /* Rodapé */
-  footer {
-    margin-top: 80px;
-    padding: 30px 0;
+  /* ===== START MAIOR ===== */
+  .botoes button {
+    background-color: #ff8c00;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 18px 55px; /* AUMENTADO */
+    font-size: 30px;    /* AUMENTADO */
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    transition: 0.2s ease;
   }
 
-  footer button {
-    margin: 5px;
+  .botoes button:hover {
+    background-color: #ff9f1a;
+    transform: scale(1.05);
   }
 
-  .social {
-    margin-top: 15px;
-    display: flex;
+  /* POPUP */
+  #popup-modos {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
     justify-content: center;
-    gap: 12px;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
   }
 
-  .social div {
-    width: 30px;
-    height: 30px;
-    background-color: rgba(255,255,255,0.3);
-    border-radius: 8px;
+  #popup-modos > div {
+    background: linear-gradient(135deg, #1a237e, #283593);
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    animation: popupAnim 0.25s ease;
+  }
+
+  #popup-modos button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.2s;
+  }
+
+  #popup-modos button:hover {
+    background-color: #ffffff;
+    color: #283593;
+    transform: scale(1.05);
+  }
+
+  @keyframes popupAnim {
+    from { transform: scale(0.8); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+
+  /* Redes sociais */
+  #footer-social {
+    background: #1a237e;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+  #footer-social p {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .social-icons a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 28px;
+    color: white;
+    transition: .3s;
+  }
+
+  .social-icons a:hover {
+    color: #ff9800;
+    transform: scale(1.2);
   }
 </style>
 </head>
@@ -110,67 +158,58 @@
   <!-- Cabeçalho -->
   <header>
     <button id="botaoSom">
-  <i class="fa-solid fa-volume-high"></i>
-</button>
-
-    </div>
+      <i class="fa-solid fa-volume-high"></i>
+    </button>
   </header>
 
-<!-- Música de fundo -->
-<audio id="musicaFundo" loop>
-  <source src="/Sons/Music.mp3" type="audio/mpeg">
-</audio>
+  <!-- Música de fundo -->
+  <audio id="musicaFundo" loop>
+    <source src="/Sons/Music.mp3" type="audio/mpeg">
+  </audio>
 
+  <!-- Logo -->
+  <img src="/Home/LogoQuoll.png" alt="Logo do site Quoll" class="logo">
 
-  <!-- Logo central -->
-<img src="/Home/LogoQuoll.png" alt="Logo do site Quoll" class="logo">
-
-
-  <!-- Explicação -->
-  <section class="explicacao">
-    <h2>Seja bem-vindo ao Quoll!</h2>
-
-  <!-- Botões principais -->
+  <!-- Botão Start -->
   <section class="botoes">
     <div class="linha">
       <button onclick="abrirModos()">Start</button>
     </div>
-
   </section>
 
-  <!-- Container onde o popup será injetado -->
-<div id="popup-modos" style="display: none;"></div>
+  <!-- Popup -->
+  <div id="popup-modos" style="display: none;"></div>
 
   <!-- Rodapé -->
   <footer>
     <div>
       <button>FAQ</button>
       <button onclick="window.location.href='Subpastas/Privacidade/privacidade.html'">Política de Privacidade</button>
-     <button onclick="window.location.href='Subpastas/Suporte/suporte.html'">Suporte</button>
+      <button onclick="window.location.href='Subpastas/Suporte/suporte.html'">Suporte</button>
     </div>
 
     <p>© 2025 Quoll. Todos os direitos reservados.</p>
-
-<footer id="footer-social">
-  <p>Siga-me nas redes sociais:</p>
-
-  <div class="social-icons">
-    <a href="https://www.instagram.com/2ds.artur/?igsh=Z2dqa3lqd2VjbWxl#" target="_blank" title="Instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-
-    <a href="https://www.tiktok.com/@segundo.ds25?_t=ZM-90k1OIVpm2t&_r=1" target="_blank" title="TikTok">
-      <i class="fa-brands fa-tiktok"></i>
-    </a>
-
-    <a href="https://www.instagram.com/cetiescolarartur/?igsh=ZGRzN3Nydnc5cmVu#" target="_blank" title="instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-
-  
-  </div>
   </footer>
-   
+
+  <!-- Redes sociais -->
+  <footer id="footer-social">
+    <p>Siga-me nas redes sociais:</p>
+
+    <div class="social-icons">
+      <a href="https://www.instagram.com/2ds.artur/" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+
+      <a href="https://www.tiktok.com/@segundo.ds25" target="_blank">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+
+      <a href="https://www.instagram.com/cetiescolarartur/" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
+
   <script src="/Modos/modes.js"></script>
   <script src="/Sons/audio.js"></script>
 

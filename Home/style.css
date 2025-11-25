@@ -1,16 +1,16 @@
 /* ===== POPUP DE MODOS ===== */
 #popup-modos {
-  position: fixed;                /* Fixa o popup em relação à tela */
+  position: fixed;                
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  display: none;                  /* Começa oculto */
-  justify-content: center;        /* Centraliza horizontalmente */
-  align-items: center;            /* Centraliza verticalmente */
-  background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro transparente */
-  backdrop-filter: blur(4px);     /* Efeito de desfoque no fundo */
-  z-index: 1000;                  /* Fica acima de tudo */
+  display: none;                  
+  justify-content: center;        
+  align-items: center;            
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
 }
 
 /* Caixa principal do popup */
@@ -41,7 +41,8 @@
 }
 
 #popup-modos button:hover {
-  background-color: #ffffffff;
+  background-color: #ffffff;
+  color: #283593;
   transform: scale(1.05);
 }
 
@@ -52,7 +53,7 @@
   color: #fff;
 }
 
-/* Animação suave de entrada */
+/* Animação suave */
 @keyframes popupAnim {
   from {
     transform: scale(0.8);
@@ -71,8 +72,18 @@
   transition: transform 0.2s ease, opacity 0.3s ease;
 }
 
+/* ===== CENTRALIZAÇÃO DO TÍTULO DE BOAS-VINDAS ===== */
+#area-start {
+  text-align: center;  /* Centraliza tudo dentro da área */
+  margin-top: 20px;
+}
 
-
+#titulo-boas-vindas {
+  margin-top: 15px;
+  font-size: 24px;
+  color: #1a237e;
+  font-weight: 700;
+}
 
 
 /* ===== FOOTER COM REDES SOCIAIS ===== */
@@ -100,5 +111,5 @@
 
 #footer-social .social-icons a:hover {
   transform: scale(1.2);
-  color: #ff9800; /* cor ao passar o mouse */
+  color: #ff9800;
 }
