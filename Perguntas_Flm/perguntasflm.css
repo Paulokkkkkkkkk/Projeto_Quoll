@@ -1,7 +1,3 @@
-/* ====== ESTILO GERAL ====== */
-html, body {
-  height: 100%;
-}
 body {
   font-family: "Patrick Hand", cursive;
   background-color: #fff;
@@ -9,62 +5,57 @@ body {
   text-align: center;
   margin: 0;
   padding: 0;
-  padding-top: 70px;
 }
 
-/* container do quiz */
 .quiz-container {
   max-width: 600px;
-  margin: 40px auto;
+  margin: 100px auto;
   background-color: #fff;
   border-radius: 20px;
   padding: 20px;
-  position: relative;
+  position: relative; /* Adicionado para posicionar o botão de música/vidas se estiver fora */
 }
 
-/* cabeçalho */
 .question-header {
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .circle {
   background-color: #591E98;
   color: white;
   border-radius: 50%;
-  width: 55px;
-  height: 55px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
+  font-size: 28px;
   margin: 0 auto 10px;
 }
 
 h2 {
-  font-size: 24px;
-  margin: 0;
+  font-size: 26px;
 }
 
-/* ====== GRID DAS OPÇÕES ====== */
 #options-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 15px;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
-/* ====== BOTÕES DAS OPÇÕES ====== */
 .option {
   background-color: #d96600;
   color: #fff;
   border: none;
-  padding: 8px;
-  font-size: 15px;
+  padding: 12px 24px;
+  margin: 10px;
+  font-size: 18px;
   cursor: pointer;
-  border-radius: 14px;
-  transition: 0.12s ease;
-  min-height: 55px;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  min-height: 50px; /* Garante altura mínima para imagens */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,39 +64,37 @@ h2 {
 
 .option:hover {
   background-color: #ff8000;
-  transform: scale(1.03);
-}
-
-/* imagens dentro do botão */
-.option img {
-  max-height: 40px;
-  max-width: 80%;
-  object-fit: contain;
+  transform: scale(1.05);
 }
 
 /* ====== ESTADOS CORRETO / ERRADO ====== */
-/* Roxo para Acerto (já estava) */
+
+/* Roxa Escuro (Correto) */
 .option.correct {
-  background-color: #591E98 !important;   /* roxo */
+  background-color: #3b1470 !important; /* Roxo Escuro */
   color: white !important;
 }
 
-/* Vermelho para Erro (ADICIONADO/AJUSTADO) */
+/* Vermelho (Errado) */
 .option.wrong {
-  background-color: #FF0000 !important; /* vermelho */
+  background-color: #f44336 !important; /* Vermelho */
   color: white !important;
 }
 
-/* ====== BOTÃO PRÓXIMA ====== */
+/* Opcional: Remove as classes que não estão sendo usadas no JS, mas estavam no seu CSS */
+/* .correct { display: none; } */
+/* .incorrect { display: none; } */
+
+
 button {
   background-color: #591E98;
   color: white;
   border: none;
-  padding: 10px 18px;
-  font-size: 18px;
+  padding: 12px 20px;
+  font-size: 20px;
   border-radius: 8px;
   cursor: pointer;
-  transition: 0.12s ease;
+  transition: all 0.2s ease-in-out;
 }
 
 button:hover {
@@ -116,86 +105,77 @@ button:hover {
   display: none !important;
 }
 
-/* ====== FOOTER ====== */
 footer {
-  position: relative;
-  margin-top: 20px;
+  position: absolute;
+  bottom: 10px;
   font-size: 14px;
   color: #333;
   width: 100%;
   text-align: center;
 }
 
-/* ====== BARRA DE PROGRESSO ====== */
-.progress-bar {
-  width: 100%;
-  height: 10px;
-  background: #ddd;
-  border-radius: 20px;
-  overflow: hidden;
-  margin: 20px 0;
+/* imagens dentro do botão */
+.option img {
+  max-height: 40px;
+  max-width: 80%;
+  object-fit: contain;
 }
 
-/* Ajustado para usar o ID 'progress-fill' (filho do .progress-bar) */
-#progress-fill {
-  height: 100%;
-  width: 0%;
-  background: #591E98;
-  transition: width 0.3s ease;
-}
-
-/* ====== VIDAS ====== */
+/* Estilo do Contador de Vidas (ajustado para ser fixo e visível) */
 #lives-status {
-  position: fixed;
-  top: 18px;
-  right: 20px;
-  font-size: 20px;
-  color: white;
-  z-index: 150;
-  padding: 6px 10px;
-  border-radius: 6px;
-  background-color: rgba(0, 0, 0, 0.45);
+    position: fixed; /* Mudado para fixed para melhor visualização */
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    color: white;
+    z-index: 150;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro para contraste */
 }
 
-/* ====== BOTÃO DE MÚSICA ====== */
-#music-button {
-  position: fixed;
-  top: 18px;
-  left: 20px;
-  z-index: 9999;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #591E98;
-  color: white;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  cursor: pointer;
+/* Estilo do botão de Som (novo ID: .btn-som) */
+.btn-som {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 150;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #591E98;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
 }
 
-/* mobile */
-@media (max-width: 480px) {
-  #options-container {
-    grid-template-columns: 1fr;
-  }
+/* ... [Seus estilos CSS existentes] ... */
 
-  .quiz-container {
-    margin: 20px;
-  }
+/* ====== BARRA DE PROGRESSO ====== */
+/* Container para centralizar e dar margem */
+.progress-bar-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto 0; /* Espaço no topo */
+}
 
-  #music-button {
-    width: 45px;
-    height: 45px;
-    font-size: 18px;
-    left: 12px;
-    top: 12px;
-  }
+/* Base da barra */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+}
 
-  #lives-status {
-    top: 12px;
-    right: 12px;
-  }
+/* Preenchimento da barra */
+#progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #591E98; /* Cor roxa */
+    transition: width 0.3s ease; /* Transição suave */
 }
