@@ -141,161 +141,153 @@ const hard = shuffle(quizData.filter(q => q.level === "dificil"));
 // 2) Manter ordem: fáceis → médias → difíceis
 const orderedQuestions = [...easy, ...medium, ...hard];
 
-// Variáveis do jogo
+
+/// ==========================
+// QUIZ CONFIGURAÇÃO
+// ==========================
 let currentQuestion = 0;
 let score = 0;
-let lives = 3; // 💖 O Jogo começa com 3 vidas
+let lives = 3;
+let wrongAnswers = 0;
 
-// HTML Elements
-const questionText = document.getElementById("question-text");
+// Número total de perguntas
+const totalQuestions = quizData.length;
+
+// ==========================
+// ELEMENTOS DO DOM
+// ==========================
 const questionNumber = document.getElementById("question-number");
+const questionText = document.getElementById("question-text");
 const optionsContainer = document.getElementById("options-container");
-const nextBtn = document.getElementById("next-btn");
-const resultContainer = document.getElementById("result");
-const progressBarFill = document.getElementById("progress-fill"); 
-const livesDisplay = document.getElementById("lives-counter");
+const nextButton = document.getElementById("next-btn");
+const resultDiv = document.getElementById("result");
+const livesCounter = document.getElementById("lives-counter");
+const progressFill = document.getElementById("progress-fill");
 
-// ---------------------- FUNÇÕES DE VIVAS E RESULTADOS ----------------------
+const popup = document.getElementById("game-popup");
+const popupTitle = document.getElementById("popup-title");
+const popupMessage = document.getElementById("popup-message");
+const popupScore = document.getElementById("popup-score");
 
-// 🟢 FUNÇÃO AUXILIAR: Atualiza a exibição de vidas na tela
-function updateLivesDisplay() {
-    if (livesDisplay) {
-        livesDisplay.textContent = lives;
-    }
+
+
+// ==========================
+// CARREGAR PRIMEIRA PERGUNTA
+// ==========================
+showQuestion();
+
+
+
+// ==========================
+// MOSTRAR PERGUNTA
+// ==========================
+function showQuestion() {
+    const q = quizData[currentQuestion];
+
+    questionNumber.textContent = (currentQuestion + 1) + ".";
+    questionText.textContent = q.question;
+
+    optionsContainer.innerHTML = "";
+
+    q.options.forEach(option => {
+        const button = document.createElement("button");
+        button.classList.add("option");
+        button.textContent = option;
+        button.onclick = () => selectOption(button, q.answer);
+        optionsContainer.appendChild(button);
+    });
+
+    nextButton.classList.add("hidden");
 }
 
-// 🟢 FUNÇÃO showEndGame: Centralizada para finalização (Vitória ou Derrota)
-function showEndGame(title, message, totalQuestions) {
-  // Oculta elementos do quiz
-  const questionHeader = document.querySelector(".question-header");
-  if (questionHeader) {
-      questionHeader.classList.add("hidden");
-  }
-  optionsContainer.classList.add("hidden");
-  nextBtn.classList.add("hidden");
-  
-  // Oculta/Completa a barra de progresso
-  if (progressBarFill) progressBarFill.style.width = "100%"; 
 
-  // Exibe a tela de resultado
-  resultContainer.classList.remove("hidden");
-  resultContainer.innerHTML = `
-    <h2>${title}</h2>
-      <p>${message}</p>
-      <p>Sua pontuação final foi: ${score} acerto(s) de ${totalQuestions} perguntas.</p>
-    <a href="../Home/index.html" class="botao-voltar">Voltar ao Menu</a>
-  `;
+
+// ==========================
+// SELECIONAR OPÇÃO
+// ==========================
+function selectOption(button, correctAnswer) {
+    const options = document.querySelectorAll(".option");
+
+    // bloqueia cliques múltiplos
+    options.forEach(btn => btn.disabled = true);
+
+    if (button.textContent === correctAnswer) {
+        button.classList.add("correct");
+        score++;
+    } else {
+        button.classList.add("wrong");
+        wrongAnswers++;
+        lives--;
+        livesCounter.textContent = lives;
+
+        // SE FICAR SEM VIDAS → GAME OVER
+        if (lives <= 0) {
+            showGameOver();
+            return;
+        }
+    }
+
+    // mostra botão próxima
+    nextButton.classList.remove("hidden");
+
+    // destaca resposta correta
+    options.forEach(btn => {
+        if (btn.textContent === correctAnswer) {
+            btn.classList.add("correct");
+        }
+    });
+
+    updateProgress();
 }
 
-// 🟢 FUNÇÃO showResult: Fim de jogo por conclusão
-function showResult() {
-  showEndGame(
-    "Quiz Finalizado!",
-    `Parabéns! Você acertou ${score} de ${orderedQuestions.length} perguntas!`,
-    orderedQuestions.length
-  );
-}
 
-// ---------------------- FUNÇÕES PRINCIPAIS ----------------------
 
-function loadQuestion() {
-  const q = orderedQuestions[currentQuestion];
-  questionText.textContent = q.question;
-  questionNumber.textContent = `${currentQuestion + 1}.`;
+// ==========================
+// BOTÃO PRÓXIMA PERGUNTA
+// ==========================
+nextButton.addEventListener("click", () => {
+    currentQuestion++;
 
-  // Atualizar barra de progresso (a cada questão carregada)
-  let progress = ((currentQuestion) / orderedQuestions.length) * 100; 
-  if (progressBarFill) progressBarFill.style.width = progress + "%";
-  
-  // Garante que o contador de vidas esteja visível
-  updateLivesDisplay(); 
+    if (currentQuestion >= totalQuestions) {
+        showEndGame();
+        return;
+    }
 
-  optionsContainer.innerHTML = "";
-  nextBtn.style.pointerEvents = "none"; // Desativa o botão Próxima no início da questão
-
-  q.options.forEach(opt => {
-    const optionBtn = document.createElement("div");
-    optionBtn.classList.add("option");
-
-    // Se for imagem
-    if (opt.endsWith(".png") || opt.endsWith(".jpg")) {
-      const img = document.createElement("img");
-      img.src = opt;
-      img.alt = "Opção";
-      optionBtn.appendChild(img);
-    } else {
-      optionBtn.textContent = opt;
-    }
-
-    optionBtn.addEventListener("click", () => selectOption(optionBtn, q.answer));
-    optionsContainer.appendChild(optionBtn);
-  });
-}
-
-// 🟢 FUNÇÃO selectOption: Adicionando a lógica de vidas (Lives) - CORRIGIDA
-function selectOption(selected, correctAnswer) {
-  const options = document.querySelectorAll(".option");
-
-  // Desativa todos os botões de opção após a primeira seleção
-  options.forEach(opt => opt.style.pointerEvents = "none");
-
-  // 🔑 LÓGICA DE VERIFICAÇÃO AJUSTADA: 
-  const selectedImg = selected.querySelector("img");
-  
-  // Se for uma opção de imagem, verifica se a URL da imagem selecionada TERMINA com a URL correta.
-  const isCorrect = selectedImg
-    ? selectedImg.src.endsWith(correctAnswer) 
-    : selected.textContent === correctAnswer;
-
-  if (isCorrect) {
-    selected.classList.add("correct");
-    score++;
-  } else {
-    // Adiciona a classe 'wrong' para colorir de vermelho
-    selected.classList.add("wrong"); 
-    
-    // 💔 Diminui uma vida em caso de erro
-    lives--;
-    updateLivesDisplay();
-
-    // Mostra a resposta correta (roxo)
-    options.forEach((opt) => {
-      // Verifica se a opção atual é a resposta correta
-        const optImg = opt.querySelector("img");
-        // Usa a mesma lógica de verificação 'isCorrect' para encontrar a resposta certa
-        const isAnswer = (optImg && optImg.src.endsWith(correctAnswer)) || opt.textContent === correctAnswer;
-        if (isAnswer) {
-            opt.classList.add("correct");
-        }
-    });
-
-    // 🛑 VERIFICAÇÃO DE FIM DE JOGO POR ERROS
-    if (lives <= 0) {
-      // Garante que a barra de progresso reflita a última questão antes de mostrar o fim de jogo
-      const totalQuestions = orderedQuestions.length;
-      let progress = ((currentQuestion + 1) / totalQuestions) * 100;
-      if (progressBarFill) progressBarFill.style.width = progress + "%";
-      
-      showEndGame("VOCÊ PERDEU!", "Você errou demais e perdeu todas as suas vidas.", orderedQuestions.length);
-      return; 
-    }
-  }
-  // Ativa o botão Próxima
-  nextBtn.style.pointerEvents = "auto";
-}
-
-nextBtn.addEventListener("click", () => {
-  currentQuestion++;
-  if (currentQuestion < orderedQuestions.length) {
-    loadQuestion();
-    // Atualiza a barra de progresso APÓS avançar para a próxima questão
-    const totalQuestions = orderedQuestions.length;
-    let progress = ((currentQuestion) / totalQuestions) * 100;
-    if (progressBarFill) progressBarFill.style.width = progress + "%";
-  } else {
-    showResult();
-  }
+    showQuestion();
 });
 
-// Iniciar
-loadQuestion();
+
+
+// ==========================
+// FINAL DO QUIZ – VITÓRIA
+// ==========================
+function showEndGame() {
+    popupTitle.textContent = "🎉 Você Concluiu!";
+    popupMessage.textContent = "Parabéns! Você respondeu todas as perguntas!";
+    popupScore.textContent = `Acertos: ${score}/${totalQuestions}`;
+    popup.classList.remove("hidden");
+}
+
+
+
+// ==========================
+// GAME OVER – VIDAS ACABARAM
+// ==========================
+function showGameOver() {
+    popupTitle.textContent = "💀 GAME OVER";
+    popupMessage.textContent = "Você perdeu todas as vidas!";
+    popupScore.textContent = `Acertos: ${score}/${totalQuestions}`;
+    popup.classList.remove("hidden");
+
+    nextButton.disabled = true;
+}
+
+
+
+// ==========================
+// BARRA DE PROGRESSO
+// ==========================
+function updateProgress() {
+    const progress = ((currentQuestion + 1) / totalQuestions) * 100;
+    progressFill.style.width = progress + "%";
+}

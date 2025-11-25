@@ -13,7 +13,7 @@ body {
   background-color: #fff;
   border-radius: 20px;
   padding: 20px;
-  position: relative; /* Adicionado para posicionar o botão de música/vidas se estiver fora */
+  position: relative;
 }
 
 .question-header {
@@ -55,11 +55,10 @@ h2 {
   cursor: pointer;
   border-radius: 20px;
   transition: all 0.2s ease-in-out;
-  min-height: 50px; /* Garante altura mínima para imagens */
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
 }
 
 .option:hover {
@@ -67,24 +66,15 @@ h2 {
   transform: scale(1.05);
 }
 
-/* ====== ESTADOS CORRETO / ERRADO ====== */
-
-/* Roxa Escuro (Correto) */
 .option.correct {
-  background-color: #3b1470 !important; /* Roxo Escuro */
+  background-color: #3b1470 !important;
   color: white !important;
 }
 
-/* Vermelho (Errado) */
 .option.wrong {
-  background-color: #f44336 !important; /* Vermelho */
+  background-color: #f44336 !important;
   color: white !important;
 }
-
-/* Opcional: Remove as classes que não estão sendo usadas no JS, mas estavam no seu CSS */
-/* .correct { display: none; } */
-/* .incorrect { display: none; } */
-
 
 button {
   background-color: #591E98;
@@ -114,68 +104,139 @@ footer {
   text-align: center;
 }
 
+#lives-status {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+  color: white;
+  z-index: 150;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.btn-som {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 150;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #591E98;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ===== BARRA DE PROGRESSO ===== */
+
+.progress-bar-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #591E98;
+  transition: width 0.3s ease;
+}
+/* ===== POP-UP FINAL / GAME OVER ===== */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: linear-gradient(to bottom, #1a237e, #283593);
+  padding: 40px 30px;
+  border-radius: 22px;
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+  color: white;
+
+  border: 4px solid #ff9800;
+  box-shadow: 0 0 25px rgba(255,152,0,0.6);
+
+  animation: popupShow 0.35s ease-out;
+}
+
+@keyframes popupShow {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.popup h2 {
+  font-size: 38px;
+  margin-bottom: 10px;
+  color: #ff9800;
+  text-shadow: 0 0 15px rgba(255,152,0,0.8);
+}
+
+.popup p {
+  font-size: 20px;
+  margin: 8px 0;
+}
+
+.popup-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.popup-btn {
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
+  transition: 0.25s;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.popup-btn.voltar {
+  background: #ff9800;
+}
+
+.popup-btn.retry {
+  background: #591E98;
+}
+
+.popup-btn:hover {
+  transform: scale(1.07);
+  filter: brightness(1.15);
+}
+
 /* imagens dentro do botão */
 .option img {
   max-height: 40px;
   max-width: 80%;
   object-fit: contain;
-}
-
-/* Estilo do Contador de Vidas (ajustado para ser fixo e visível) */
-#lives-status {
-    position: fixed; /* Mudado para fixed para melhor visualização */
-    top: 20px;
-    right: 20px;
-    font-size: 20px;
-    color: white;
-    z-index: 150;
-    padding: 6px 10px;
-    border-radius: 6px;
-    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro para contraste */
-}
-
-/* Estilo do botão de Som (novo ID: .btn-som) */
-.btn-som {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 150;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #591E98;
-    color: white;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-/* ... [Seus estilos CSS existentes] ... */
-
-/* ====== BARRA DE PROGRESSO ====== */
-/* Container para centralizar e dar margem */
-.progress-bar-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto 0; /* Espaço no topo */
-}
-
-/* Base da barra */
-.progress-bar {
-    width: 100%;
-    height: 10px;
-    background: #ddd;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-/* Preenchimento da barra */
-#progress-fill {
-    height: 100%;
-    width: 0%;
-    background: #591E98; /* Cor roxa */
-    transition: width 0.3s ease; /* Transição suave */
 }

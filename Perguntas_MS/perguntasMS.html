@@ -41,15 +41,20 @@
     <div id="result" class="hidden"></div>
   </div>
 
-  <!-- POP-UP DE GAME OVER / FINAL -->
-  <div id="game-popup" class="popup hidden">
-    <div class="popup-content">
-      <h2 id="popup-title"></h2>
-      <p id="popup-message"></p>
+<!-- POP-UP DE GAME OVER / FINAL -->
+<div id="game-popup" class="popup hidden">
+  <div class="popup-content">
+      <h2 id="popup-title">Game Over</h2>
+      <p id="popup-message">Você perdeu todas as suas vidas!</p>
       <p id="popup-score"></p>
-      <a href="../Home/index.html" class="popup-btn">Voltar ao Menu</a>
-    </div>
+
+      <div class="popup-buttons">
+          <a href="../Home/index.html" class="popup-btn voltar">🏠 Voltar ao Menu</a>
+          <a href="" class="popup-btn retry" onclick="location.reload()">🔄 Tentar Novamente</a>
+      </div>
   </div>
+</div>
+
 
   <footer>
     <p>© 2025 Quoll. Todos os direitos reservados.</p>
