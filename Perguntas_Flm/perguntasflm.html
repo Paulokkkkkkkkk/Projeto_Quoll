@@ -8,45 +8,54 @@
   <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 
-  <!-- Estilo -->
+  <!-- CSS -->
   <link rel="stylesheet" href="/Perguntas_Flm/perguntasflm.css">
 </head>
 <body>
 
+  <!-- BOTÃO DE MÚSICA (FIXO) -->
+  <button id="music-button">🎵</button>
+
+  <!-- VIDAS (FIXO) -->
+  <div id="lives-status">
+    Vidas: <span id="lives-counter">3</span>
+  </div>
+
+  <!-- CONTAINER CENTRAL -->
   <div class="quiz-container">
 
       <!-- Barra de progresso -->
-      <div class="progress-container">
-        <div id="progress-bar"></div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
       </div>
 
+      <!-- Título / Pergunta -->
       <div class="question-header">
         <div class="circle">
-          <span id="question-number">1.</span>
+          <span id="question-number">1</span>
         </div>
         <h2 id="question-text"></h2>
       </div>
 
-      <div id="lives-status" style="position: absolute; top: 20px; right: 20px; font-size: 24px; color: white; z-index: 100;">
-    Vidas: <span id="lives-counter">3</span>
-</div>
-
+      <!-- Opções -->
       <div id="options-container"></div>
 
-      <!-- Música -->
+      <!-- Áudio -->
       <audio id="musicaFundoFlm" loop>
         <source src="/Sons/Tema2.mp3" type="audio/mpeg">
       </audio>
 
-      <button id="botaoSomFlm" class="btn-som">🎵</button>
-
+      <!-- Botão próxima -->
       <button id="next-btn">Próxima</button>
 
+      <!-- Resultado -->
       <div id="result" class="hidden"></div>
+
   </div>
 
+  <!-- Rodapé -->
   <footer>
-    <p>© 2025 Quoll. Todos os direitos reservados.</p>
+    © 2025 Quoll. Todos os direitos reservados.
   </footer>
 
   <!-- Scripts -->
