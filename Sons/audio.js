@@ -3,8 +3,9 @@
 
 // Tentativa de obter os elementos do quiz de FILMES/SÉRIES (Flm)
 const musica = document.getElementById('musicaFundoFlm');
-const botao = document.getElementById('botaoSomFlm');
-let tocando = false;
+// ✅ CORREÇÃO AQUI: Mudado de 'botaoSomFlm' para 'music-button' para corresponder ao HTML
+const botao = document.getElementById('music-button'); 
+let tocando = false; 
 
 // Verificação de segurança: O código só roda se ambos os elementos forem encontrados
 if (musica && botao) {
@@ -15,24 +16,26 @@ if (musica && botao) {
         if (!musica.paused) {
             // A música estava tocando, agora vai pausar
             musica.pause();
-            botao.textContent = "🎵 Tocar Música"; // Ícone de Play
+            botao.textContent = "🔇"; // Ícone de mudo
         } else {
             // A música estava pausada, agora vai tocar
             musica.play().catch(error => {
                 console.error("Erro ao tentar tocar a música (pode ser bloqueio do navegador):", error);
             });
-            botao.textContent = "⏸️ Pausar Música"; // Ícone de Pause
+            botao.textContent = "🎵"; // Ícone de Play (ou Pause, dependendo do estado inicial)
         }
     });
 
     // ⚠️ Tenta iniciar o áudio automaticamente (pode ser bloqueado pelo navegador)
     musica.play().then(() => {
-        botao.textContent = "⏸️ Pausar Música";
+        // Se a reprodução automática for bem-sucedida, mostra o ícone de Pause/Som
+        botao.textContent = "🎵"; 
     }).catch(error => {
         console.log("Autoplay bloqueado. O usuário precisa clicar no botão.");
-        botao.textContent = "🎵 Tocar Música";
+        // Se a reprodução automática falhar, mostra o ícone de Mudo/Play (para incentivar o clique)
+        botao.textContent = "🔇"; 
     });
 
 } else {
-    // console.log("Áudio não configurado para este quiz. Verifique se os IDs 'musicaFundoFlm' e 'botaoSomFlm' estão corretos.");
+    // console.log("Áudio não configurado para este quiz. Verifique se os IDs 'musicaFundoFlm' e 'music-button' estão corretos.");
 }

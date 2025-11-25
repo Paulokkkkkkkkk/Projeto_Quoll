@@ -84,12 +84,14 @@ h2 {
 }
 
 /* ====== ESTADOS CORRETO / ERRADO ====== */
+/* Roxo para Acerto (já estava) */
 .option.correct {
-  background-color: #591E98 !important;  /* roxo */
+  background-color: #591E98 !important;   /* roxo */
   color: white !important;
 }
 
-.option.incorrect {
+/* Vermelho para Erro (ADICIONADO/AJUSTADO) */
+.option.wrong {
   background-color: #FF0000 !important; /* vermelho */
   color: white !important;
 }
@@ -103,6 +105,7 @@ button {
   font-size: 18px;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.12s ease;
 }
 
 button:hover {
@@ -133,7 +136,8 @@ footer {
   margin: 20px 0;
 }
 
-.progress-fill {
+/* Ajustado para usar o ID 'progress-fill' (filho do .progress-bar) */
+#progress-fill {
   height: 100%;
   width: 0%;
   background: #591E98;
