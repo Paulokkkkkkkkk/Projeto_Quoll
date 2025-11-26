@@ -2,11 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 60px 0;
 }
 
 .logo {
-  width: 400px !important;   /* força o tamanho */
+  width: 260px !important;
   max-width: 95%;
   height: auto;
 }

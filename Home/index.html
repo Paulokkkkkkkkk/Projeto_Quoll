@@ -4,213 +4,58 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quoll - Home</title>
+
 <link rel="stylesheet" href="/Home/style.css">
 <link rel="stylesheet" href="/Home/logo.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: linear-gradient(to bottom, #3b007a, #002b80);
-    color: white;
-  }
-
-  /* Cabeçalho */
-  header {
-    background-color: #001b66;
-    border-bottom: 1px solid white;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  #botaoSom {
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
-
-  .logo {
-    width: 120px;
-    height: auto;
-    margin-top: 40px;
-  }
-
-  /* Botões principais */
-  .botoes {
-    margin: 40px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .linha {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-  }
-
-  /* ===== START MAIOR ===== */
-  .botoes button {
-    background-color: #ff8c00;
-    color: white;
-    border: none;
-    border-radius: 14px;
-    padding: 18px 55px; /* AUMENTADO */
-    font-size: 30px;    /* AUMENTADO */
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    transition: 0.2s ease;
-  }
-
-  .botoes button:hover {
-    background-color: #ff9f1a;
-    transform: scale(1.05);
-  }
-
-  /* POPUP */
-  #popup-modos {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    z-index: 1000;
-  }
-
-  #popup-modos > div {
-    background: linear-gradient(135deg, #1a237e, #283593);
-    color: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-    max-width: 500px;
-    width: 90%;
-    text-align: center;
-    animation: popupAnim 0.25s ease;
-  }
-
-  #popup-modos button {
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #ff9800;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: 0.2s;
-  }
-
-  #popup-modos button:hover {
-    background-color: #ffffff;
-    color: #283593;
-    transform: scale(1.05);
-  }
-
-  @keyframes popupAnim {
-    from { transform: scale(0.8); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
-  }
-
-  /* Redes sociais */
-  #footer-social {
-    background: #1a237e;
-    color: white;
-    text-align: center;
-    padding: 20px 10px;
-  }
-
-  #footer-social p {
-    font-size: 18px;
-    font-weight: 500;
-  }
-
-  .social-icons a {
-    margin: 0 10px;
-    text-decoration: none;
-    font-size: 28px;
-    color: white;
-    transition: .3s;
-  }
-
-  .social-icons a:hover {
-    color: #ff9800;
-    transform: scale(1.2);
-  }
-</style>
 </head>
-
 <body>
 
-  <!-- Cabeçalho -->
-  <header>
-    <button id="botaoSom">
-      <i class="fa-solid fa-volume-high"></i>
-    </button>
-  </header>
+<header>
+  <button id="botaoSom">
+    <i class="fa-solid fa-volume-high"></i>
+  </button>
 
-  <!-- Música de fundo -->
-  <audio id="musicaFundo" loop>
-    <source src="/Sons/Music.mp3" type="audio/mpeg">
-  </audio>
+  <button id="botaoSuporte" onclick="window.location.href='Subpastas/Suporte/suporte.html'">
+    <i class="fa-solid fa-envelope"></i>
+  </button>
+</header>
 
-  <!-- Logo -->
-  <img src="/Home/LogoQuoll.png" alt="Logo do site Quoll" class="logo">
+<!-- Música -->
+<audio id="musicaFundo" loop>
+  <source src="/Sons/Music.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- Botão Start -->
-  <section class="botoes">
-    <div class="linha">
-      <button onclick="abrirModos()">Start</button>
-    </div>
-  </section>
+<!-- Logo maior -->
+<img src="/Home/LogoQuoll.png" class="logo" alt="Logo Quoll">
 
-  <!-- Popup -->
-  <div id="popup-modos" style="display: none;"></div>
+<!-- Start centralizado -->
+<section class="botoes">
+  <button onclick="abrirModos()">Start</button>
+</section>
 
-  <!-- Rodapé -->
-  <footer>
-    <div>
-      <button onclick="window.location.href='Subpastas/Privacidade/privacidade.html'">Política de Privacidade</button>
-      <button onclick="window.location.href='Subpastas/Suporte/suporte.html'">Suporte</button>
-    </div>
+<!-- Popup -->
+<div id="popup-modos"></div>
 
-    <p>© 2025 Quoll. Todos os direitos reservados.</p>
-  </footer>
+<!-- COPYRIGHT NO FINAL -->
+<footer id="copyright">
+  <p>© 2025 Quoll. Todos os direitos reservados.</p>
+</footer>
 
-  <!-- Redes sociais -->
-  <footer id="footer-social">
-    <p>Siga-me nas redes sociais:</p>
+<!-- Redes sociais na parte roxa -->
+<footer id="footer-social">
+  <p>Siga-me nas redes sociais:</p>
 
-    <div class="social-icons">
-      <a href="https://www.instagram.com/2ds.artur/" target="_blank">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/2ds.artur?igsh=MWNjdG1nanpvN3duZA==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@segundo.ds25" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+    <a href="https://www.instagram.com/cetiescolarartur/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+  </div>
+</footer>
 
-      <a href="https://www.tiktok.com/@segundo.ds25" target="_blank">
-        <i class="fa-brands fa-tiktok"></i>
-      </a>
-
-      <a href="https://www.instagram.com/cetiescolarartur/" target="_blank">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-    </div>
-  </footer>
-
-  <script src="/Modos/modes.js"></script>
-  <script src="/Sons/audio.js"></script>
+<script src="/Modos/modes.js"></script>
+<script src="/Sons/audio.js"></script>
 
 </body>
 </html>
