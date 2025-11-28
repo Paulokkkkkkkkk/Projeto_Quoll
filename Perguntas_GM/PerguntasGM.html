@@ -7,9 +7,19 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <link rel="stylesheet" href="/Perguntas_GM/PerguntasGM.css">
 </head>
 <body>
+
+      <!-- BOTÃO DE SOM (FORA DA CONTAINER!) -->
+  <button id="botaoSom">
+    <i class="fa-solid fa-volume-high"></i>
+  </button>
+
+  <!-- ÁUDIO -->
+  <audio id="musicaFundo" src="../Sons/Tema4.mp3" loop></audio>
 
   <div class="progress-bar-container">
     <div class="progress-bar">
@@ -30,12 +40,6 @@
     </div>
 
     <div id="options-container"></div> 
-
-    <audio id="musicaFundoFlm" loop>
-      <source src="/Sons/Tema4.mp3" type="audio/mpeg">
-    </audio>
-
-    <button id="botaoSomFlm" class="btn-som">🎵</button>
     
     <button id="next-btn">Próxima</button>
     <div id="result" class="hidden"></div>
@@ -65,3 +69,5 @@
 
 </body>
 </html>
+
+<!-- finalizado -->

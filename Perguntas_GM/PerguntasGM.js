@@ -291,3 +291,6 @@ function updateProgress() {
     const progress = ((currentQuestion + 1) / totalQuestions) * 100;
     progressFill.style.width = progress + "%";
 }
+
+
+ // finalizado

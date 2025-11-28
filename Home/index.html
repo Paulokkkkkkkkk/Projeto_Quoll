@@ -12,14 +12,19 @@
 </head>
 <body>
 
-<!-- CAMADA DE PARTÍCULAS (não bloqueia clique) -->
+<!-- CAMADA DE PARTÍCULAS -->
 <div id="particles"></div>
 
 <header>
+  <!-- BOTÃO DE SOM -->
   <button id="botaoSom">
-    <i class="fa-solid fa-volume-high"></i>
+      <i class="fa-solid fa-volume-high"></i>
   </button>
 
+  <!-- ÁUDIO DE FUNDO -->
+  <audio id="musicaFundo" src="../Sons/Music.mp3" loop></audio>
+
+  <!-- BOTÃO SUPORTE -->
   <button id="botaoSuporte" onclick="window.location.href='Subpastas/Suporte/suporte.html'">
     <i class="fa-solid fa-envelope"></i>
   </button>
@@ -28,13 +33,15 @@
 <!-- CONTAINER CENTRAL -->
 <div class="main-center">
     <img src="/Home/LogoQuoll.png" class="logo" alt="Logo Quoll">
-
     <button class="start-btn" onclick="abrirModos()">Start</button>
 </div>
 
+<!-- POPUP DOS MODOS -->
+<div id="popup-modos"></div>
+
 <!-- FOOTER -->
 <footer id="footer-social">
-  <p>Siga-me nas redes sociais:</p>
+  <p>Siga-nos nas redes sociais:</p>
   <div class="social-icons">
     <a href="https://www.instagram.com/2ds.artur?igsh=MWNjdG1nanpvN3duZA==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
     <a href="https://www.tiktok.com/@segundo.ds25" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
@@ -42,8 +49,11 @@
   </div>
 </footer>
 
+<!-- SCRIPTS -->
 <script src="/Modos/modes.js"></script>
 <script src="/Sons/audio.js"></script>
 
 </body>
 </html>
+
+<!-- finalizado -->
