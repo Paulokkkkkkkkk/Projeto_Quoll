@@ -30,14 +30,13 @@ const quizData = [
     options: ["Ubisoft", "Nintendo", "Sega", "EA"],
     answer: "Sega"
   },
-  {
-    level: "facil",
+// ---------------------- MÉDIO ---------------------
+{
+    level: "medio",
     question: "O que significa 'GOTY'?",
     options: ["Graphic Overhaul Technology Yield", "Game Option Type Yearly", "Goal of the Year", "Game of the Year"],
     answer: "Game of the Year"
   },
-
-// ---------------------- MÉDIO ----------------------
   {
     level: "medio",
     question: "Qual o jogo que contém mais parcerias atualmente?",
@@ -86,6 +85,12 @@ const quizData = [
     options: ["Roblox", "Free Fire", " Candy Crush Saga", "Subway Surfers"],
     answer: "Roblox"
   },
+{
+    level: "medio",
+    question: "Qual desses jogos NÃO é do gênero 'terror'?",
+    options: ["Silent Hill", "God of War", "Poppy Playtime", "Buckshot Roulette"],
+    answer: "God of War"
+  },
 
 // ---------------------- DIFÍCIL ----------------------
   {
@@ -93,12 +98,6 @@ const quizData = [
     question: "Quais desses jogos é considerado indie (Produção independente)?",
     options: ["GTA V", "Death Stranding", "Ena Dream BBQ", "Little Nightmares"],
     answer: "Ena Dream BBQ"
-  },
-  {
-    level: "dificil",
-    question: "Qual desses jogos NÃO é do gênero 'terror'?",
-    options: ["Silent Hill", "God of War", "Poppy Playtime", "Buckshot Roulette"],
-    answer: "God of War"
   },
   {
     level: "dificil",

@@ -1,7 +1,7 @@
 // Quiz com dificuldade, randomização por nível, barra de progresso e visual melhorado
 
 const quizData = [
-  // ---------- FÁCEIS ----------
+  // ---------- FÁCEIS ( 5 )----------
   {
     level: "facil",
     question: "Com quantos anos se entra em Hogwarts (Harry Potter)?",
@@ -33,7 +33,7 @@ const quizData = [
     answer: "Avatar (2009)"
   },
 
-  // ---------- MÉDIAS ----------
+  // ---------- MÉDIAS ( 10 ) ----------
   {
     level: "medio",
     question: "Qual dessas logos é a certa (Homem-Aranha)?",
@@ -64,26 +64,69 @@ const quizData = [
     options: ["Frozen II", "O Rei Leão (2019)", "Frozen", "Toy Story 3"],
     answer: "O Rei Leão (2019)"
   },
+{
+  level: "medio",
+  question: "Qual desses filmes ganhou o Oscar de Melhor Filme?",
+  options: ["Pantera Negra", "O Artista", "A Origem", "Clube da Luta"],
+  answer: "O Artista"
+},
+{
+  level: "medio",
+  question: "Em 'De Volta para o Futuro', para qual ano Marty McFly viaja primeiro?",
+  options: ["1985", "1955", "2015", "1885"],
+  answer: "1955"
+},
+  {
+    level: "medio",
+    question: "Qual foi o primeiro filme da Disney?",
+    options: ["Branca de Neve e os Sete Anões", "Pinóquio", "Cinderela", "Aladdin"],
+    answer: "Branca de Neve e os Sete Anões"
+  },
+{
+  level: "medio",
+  question: "Qual desses personagens NÃO é da Pixar?",
+  options: ["Relâmpago McQueen", "Shrek", "Woody", "Mike Wazowski"],
+  answer: "Shrek"
+},
+{
+  level: "medio",
+  question: "Em 'Matrix', o que significa a pílula azul?",
+  options: ["Acordar da simulação", "Permanecer na simulação", "Ganhar poderes", "Resetar a Matrix"],
+  answer: "Permanecer na simulação"
+},
 
-  // ---------- DIFÍCEIS ----------
+
+  // ---------- DIFÍCEIS ( 5 )----------
   {
     level: "dificil",
     question: "Quantas sequências a saga 'X-MEN' possui?",
     options: ["7", "5", "10", "13"],
     answer: "13"
   },
-  {
-    level: "dificil",
-    question: "Qual foi o primeiro filme da Disney?",
-    options: ["Branca de Neve e os Sete Anões", "Pinóquio", "Cinderela", "Aladdin"],
-    answer: "Branca de Neve e os Sete Anões"
-  },
+{
+  level: "dificil",
+  question: "Quem dirigiu o filme 'A Origem' (Inception)?",
+  options: ["Ridley Scott", "James Cameron", "Christopher Nolan", "Steven Spielberg"],
+  answer: "Christopher Nolan"
+},
   {
     level: "dificil",
     question: "Qual o filme com o maior número de premiações até no momento?",
     options: ["Ben-Hur (1959)", "Senhor dos Anéis: O Retorno do Rei (2003)", "Interestelar (2014)", "Vingadores: Ultimato (2019)"],
     answer: "Ben-Hur (1959)"
-  }
+  },
+{
+  level: "dificil",
+  question: "Qual o nome do primeiro filme totalmente colorido da história do cinema?",
+  options: ["O Mágico de Oz", "Becky Sharp", "E o Vento Levou", "O Nascimento de uma Nação"],
+  answer: "Becky Sharp"
+},
+{
+  level: "dificil",
+  question: "Quantos Oscars a franquia 'O Senhor dos Anéis' ganhou no total?",
+  options: ["8", "12", "17", "21"],
+  answer: "17"
+}
 ];
 
 // ---------------------- VARIÁVEIS E INICIALIZAÇÃO ----------------------

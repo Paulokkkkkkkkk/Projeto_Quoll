@@ -1,6 +1,6 @@
 const quizData = [
   // ------------------------------------
-  // ---------- FÁCEIS (7 Perguntas) ----------
+  // ---------- FÁCEIS (5 Perguntas) ----------
   // ------------------------------------
   {
     level: "facil",
@@ -16,21 +16,9 @@ const quizData = [
   },
   {
     level: "facil",
-    question: "Qual é o oceano que banha o Brasil?",
-    options: ["Pacífico", "Atlântico", "Índico", "Ártico"],
-    answer: "Atlântico"
-  },
-  {
-    level: "facil",
     question: "Qual é o maior planeta do Sistema Solar?",
     options: ["Terra", "Júpiter", "Saturno", "Marte"],
     answer: "Júpiter"
-  },
-  {
-    level: "facil",
-    question: "Qual é a fórmula química da água?",
-    options: ["CO2", "H2O", "O2", "NaCl"],
-    answer: "H2O"
   },
   {
     level: "facil",
@@ -51,8 +39,20 @@ const quizData = [
   },
 
   // ------------------------------------
-  // ---------- MÉDIAS (7 Perguntas) ----------
+  // ---------- MÉDIAS (10 Perguntas) ----------
   // ------------------------------------
+  {
+    level: "medio",
+    question: "Qual é o oceano que banha o Brasil?",
+    options: ["Pacífico", "Atlântico", "Índico", "Ártico"],
+    answer: "Atlântico"
+  },
+  {
+    level: "medio",
+    question: "Qual é a fórmula química da água?",
+    options: ["CO2", "H2O", "O2", "NaCl"],
+    answer: "H2O"
+  },
   {
     level: "medio",
     question: "Quem pintou a Mona Lisa?",
@@ -95,9 +95,15 @@ const quizData = [
     options: ["Yen", "Won", "Dólar", "Euro"],
     answer: "Yen"
   },
+  {
+    level: "medio",
+    question: "Qual é o maior deserto do mundo?",
+    options: ["Saara", "Gobi", "Antártida", "Atacama"],
+    answer: "Antártida"
+  },
 
   // ------------------------------------
-  // ---------- DIFÍCEIS (6 Perguntas) ----------
+  // ---------- DIFÍCEIS (5 Perguntas) ----------
   // ------------------------------------
   {
     level: "dificil",
@@ -116,12 +122,6 @@ const quizData = [
     question: "Qual é a capital da Austrália?",
     options: ["Sydney", "Melbourne", "Canberra", "Perth"],
     answer: "Canberra"
-  },
-  {
-    level: "dificil",
-    question: "Qual é o maior deserto do mundo?",
-    options: ["Saara", "Gobi", "Antártida", "Atacama"],
-    answer: "Antártida"
   },
   {
     level: "dificil",

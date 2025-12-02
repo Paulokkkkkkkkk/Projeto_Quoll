@@ -86,14 +86,14 @@ const quizData = [
     options: ["Sopa suspeita", "Maçã Dourada Encantada", "Cenoura Dourada", "Pão"],
     answer: "Cenoura Dourada"
   },
-
-  // ----------------------- DIFÍCEIS -----------------------
   {
-    level: "dificil",
+    level: "medio",
     question: "O creeper foi um erro, mas ele era para ser o qual mob?",
     options: ["Porco", "Galinha", "Zumbi", "Slime"],
     answer: "Porco"
   },
+
+  // ----------------------- DIFÍCEIS -----------------------
   {
     level: "dificil",
     question: "Quantos corações tem o mob Warden?? ",
